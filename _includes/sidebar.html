@@ -9,7 +9,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">Home</a>
+    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">홈</a>
 
     {% comment %}
       The code below dynamically generates a sidebar nav of pages with
@@ -24,6 +24,7 @@
         {% endif %}
       {% endif %}
     {% endfor %}
+    <a href="https://github.com/tdiads/tdiads.github.io/new/master/_posts/">작성</a>    
 
     <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
   </nav>
