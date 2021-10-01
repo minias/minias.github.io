@@ -613,3 +613,16 @@ a.pagination-item:hover {
     text-align: left;
     color: #808080;
 }
+:root {
+    --base-min-width: 1280px;
+    --color-sky: #3294ff;
+    --color-base-gray: #666;
+    --border-c2c2c2: #c2c2c2;
+    --border-e2e2e2: #e2e2e2;
+    --font-size-28: 28px;
+    --font-size-18: 18px;
+    --font-size-16: 16px;
+    --font-size-14: 14px;
+    --content-title-size: 24px;
+    --area-margin-bottom: 220px;
+}
