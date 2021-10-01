@@ -586,6 +586,7 @@ a.pagination-item:hover {
   margin-bottom: 25px;
 }
 #footerWrap .detail_info {
+  padding-left: 0px;
   list-style: none;
   overflow: hidden;
   clear: both;
