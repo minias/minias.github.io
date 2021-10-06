@@ -1,2 +1,4 @@
-## 목록
-
+---
+layout: page
+title: 목록
+---
