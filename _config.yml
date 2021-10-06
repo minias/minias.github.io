@@ -1,7 +1,7 @@
 # Setup
-title:               TDI ADS
-tagline:             '기술 블로그'
-description:         'TDI ADS의 기술블로그입니다.'
+title:               Minias
+tagline:             'tagline'
+description:         'description'
 url:                 https://tdiads.github.io
 baseurl:             ''
 paginate:            5
@@ -9,9 +9,9 @@ permalink:           pretty
 
 # About/contact
 author:
-  name:              TDIADS
-  url:               https://tdiads.com
-  email:             tdi9@tdi9.com
+  name:              Minias
+  url:               https://minias.github.io.com
+  email:             admin@gnuhacker.com
 
 # Gems
 plugins:
