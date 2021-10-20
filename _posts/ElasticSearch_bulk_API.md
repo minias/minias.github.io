@@ -1,3 +1,8 @@
+---
+layout: post
+title: ElasticSearch_bulk_API
+---
+
 ```
 {"index":{"_index":"test","_id":"1"}}
 {"field":"value one"}
