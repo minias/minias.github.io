@@ -1,3 +1,8 @@
+---
+layout: post
+title: Setting VIM
+---
+
 # vim Setting
 
 1. vundle 플러그인 설치  [https://github.com/VundleVim/Vundle.vim.git](https://github.com/VundleVim/Vundle.vim.git) 
