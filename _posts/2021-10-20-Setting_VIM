@@ -1,0 +1,33 @@
+# vim Setting
+
+1. vundle 플러그인 설치  [https://github.com/VundleVim/Vundle.vim.git](https://github.com/VundleVim/Vundle.vim.git) 
+
+```bash
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+2. .vimrc 설정
+
+```bash
+wget https://raw.githubusercontent.com/jjeaby/jscript/master/.vimrc
+source ~/.vimrc
+```
+
+3. vi 명령창에서 플러그인 설치
+
+```bash
+:PluginInstall
+```
+
+4. 플러그인 .vimrc 추가
+
+```bash
+# vi ~/.vimrc
+Plugin 'ZzAntares/vim-laravel'
+```
+
+5. 사용법
+
+- ctrl + w, w 를 누르면 파일트리 <--> 에디터 창으로 포커스가 이동된다.
+- :sp "파일이름" 으로 창을 분할한 경우 ctrl + w, ctrl + h,j,k,l 로 분할된 창을 이동 할 수 있다.
+- \nt 누르면 NerdTree 표시
