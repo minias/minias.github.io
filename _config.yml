@@ -1,7 +1,7 @@
 # Setup
 title:               Minias
-tagline:             'tagline'
-description:         'description'
+tagline:             '미니어스 기술 블로그'
+description:         '잡다한 팁과 지식정리 및 공유'
 url:                 https://minias.github.io
 baseurl:             ''
 paginate:            5
