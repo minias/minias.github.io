@@ -1,6 +1,6 @@
 ---
  layout : post
- title : vimrc_file
+ title : .vimrc 파일
 ---
 
 ```bash
