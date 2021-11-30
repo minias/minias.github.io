@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 데이터 시각화를 위한 차트
+tags: [chart]
 ---
 
 ## 실시간 데이터 시각화를 위한 차트
