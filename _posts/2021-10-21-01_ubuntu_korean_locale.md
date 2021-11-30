@@ -1,6 +1,7 @@
 ---
  layout : post
  title : Ubuntu 한글 설정
+ tags: [linux]
 ---
 
 ```bash

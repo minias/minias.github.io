@@ -112,6 +112,46 @@ Using Liquid you can also conditionally show the sidebar open on a per-page basi
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" {% if page.title =="Home" %}checked{% endif %}>
 ```
 
+
+## Tags
+
+Create tags with `_tools/createTag url-name "Pretty Name"`. Tag posts by adding `tags: [tag-name]` to the front matter of post files.
+
+For example:
+
+### 1. Create a new tag rendered as *Using git* on pages, but referenced as `using-git` in source files
+
+```
+$ ./_tools/createTag "Using git"
+```
+
+Note: This script converts the pretty name you specify (e.g. *Using git*) into a simple slug name (e.g. `using-git`), with these side effects:
+
+* all capitalized characters are converted to lowercase
+* all symbols (other then numbers and letters) are replaced with dashes `-`
+
+### 2. Create a new post file: `_posts/2014-12-31-how-to-clone-a-repository.md`
+
+```
+---
+layout: post
+title: How to clone a repository
+tags: [using-git, documentation]
+---
+
+See the [GitHub topic](https://help.github.com/articles/fork-a-repo/). It's pretty good.
+```
+
+### 3. Add, commit, and push the updates:
+
+```
+$ git add _data/tags.yml
+$ git add tag/using-git.md
+$ git add _posts/2014-12-31-how-to-clone-a-repository.md
+$ git commit -m "Add new tag and post"
+$ git push
+```
+
 ## Development
 
 Lanyon has two branches, but only one is used for active development.
