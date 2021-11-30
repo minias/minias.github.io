@@ -1,2 +1,5 @@
 - slug: linux
   name: Linux
+
+- slug: chart
+  name: Chart
