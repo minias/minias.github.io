@@ -1,7 +1,7 @@
 ---
  layout : post
  title : ssh-auto-login 이용한 ssh 멀티파일 업로드/다운로드
- tags: []
+ tags: [shell]
 ---
 
 ```bash

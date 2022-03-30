@@ -12,3 +12,12 @@
 
 - slug: elasticsearch
   name: elasticsearch
+
+- slug: tech
+  name: tech
+
+- slug: shell
+  name: shell
+
+- slug: config
+  name: config

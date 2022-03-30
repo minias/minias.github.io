@@ -1,7 +1,7 @@
 ---
 layout: post
 title: nginx는 왜 일반계정으로 동작하지 못하는가?
-tags: []
+tags: [tech]
 ---
 
 ## MacOS brew service 관련
