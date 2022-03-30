@@ -14,7 +14,7 @@
   }, true);
 })(document);
 
-var links = document.querySelectorAll( '.post-content a' );
+var links = document.querySelectorAll('a');
 for (var i = 0, length = links.length; i < length; i++) {
 	if (links[i].hostname != window.location.hostname) {
 		links[i].target = '_blank';
