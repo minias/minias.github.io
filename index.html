@@ -12,9 +12,9 @@ title: Home
       </a>
     </h1>
 
-    <span class="post-date">{{ post.date | date_to_string }} | {{ post.tags }} </span>
+    <span class="post-date">{{ post.date | date: "%F %T" }} | {{ post.tags }} </span>
 
-    {{ post.content }}
+    <!--{{ post.content }}-->
   </div>
   {% endfor %}
 </div>
