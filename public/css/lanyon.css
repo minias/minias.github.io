@@ -90,6 +90,9 @@ h1, h2, h3, h4, h5, h6 {
   .container {
     max-width: 60rem;
   }
+ .sidebar {
+  visibility: visible;
+ }
 }
 
 @media (max-height: 20em) {
