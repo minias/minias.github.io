@@ -9,3 +9,6 @@
 
 - slug: macos
   name: MacOs
+
+- slug: elasticsearch
+  name: elasticsearch

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MacOs .dmg 배포시 키체인등록
-tags: []
+tags: [macos]
 ---
 
 ## mac에 키체인 등록

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ElasticSearch_bulk_API
-tags: []
+tags: [elasticsearch]
 ---
 
 ```json
