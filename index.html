@@ -12,7 +12,7 @@ title: Home
       </a>
     </h1>
 
-    <span class="post-date">{{ post.date | date_to_string }} | {{ tag_list }} </span>
+    <span class="post-date">{{ post.date | date_to_string }} | {{ post.tags }} </span>
 
     {{ post.content }}
   </div>
@@ -22,16 +22,16 @@ title: Home
 <div class="pagination">
   {% if paginator.previous_page %}
     {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ '/' | absolute_url }}">다음</a>
+      <a class="pagination-item newer" href="{{ '/' | absolute_url }}"><</a>
     {% else %}
-      <a class="pagination-item newer" href="{{ paginator.previous_page_path | absolute_url }}">다음</a>
+      <a class="pagination-item newer" href="{{ paginator.previous_page_path | absolute_url }}"><</a>
     {% endif %}
   {% else %}
-    <span class="pagination-item newer">다음</span>
+    <span class="pagination-item newer"><</span>
   {% endif %}
   {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | absolute_url }}">이전</a>
+    <a class="pagination-item older" href="{{ paginator.next_page_path | absolute_url }}">></a>
   {% else %}
-    <span class="pagination-item older">이전</span>
+    <span class="pagination-item older">></span>
   {% endif %}
 </div>
