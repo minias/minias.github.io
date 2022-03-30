@@ -1,6 +1,7 @@
 ---
 layout: post
 title: MacOs .dmg 배포시 키체인등록
+tags: []
 ---
 
 ## mac에 키체인 등록
@@ -27,8 +28,8 @@ ex) xcrun altool --notarize-app --username nm-dev@tistory.com --password @keycha
 ```
 
 ## bundle id 발급
- - https://developer.apple.com/account/resources/identifiers/list 접속
- - 개발자 계정으로 로그인
- - identifiers 추가
- - 생성된 com.xxxx.xxxx 형식의 bundle id 사용하면됨
 
+- <https://developer.apple.com/account/resources/identifiers/list> 접속
+- 개발자 계정으로 로그인
+- identifiers 추가
+- 생성된 com.xxxx.xxxx 형식의 bundle id 사용하면됨

@@ -5,7 +5,6 @@ Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content 
 ![Lanyon](https://f.cloud.github.com/assets/98681/1825266/be03f014-71b0-11e3-9539-876e61530e24.png)
 ![Lanyon with open sidebar](https://f.cloud.github.com/assets/98681/1825267/be04a914-71b0-11e3-966f-8afe9894c729.png)
 
-
 ## Contents
 
 - [Usage](#usage)
@@ -17,22 +16,19 @@ Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content 
 - [Author](#author)
 - [License](#license)
 
-
 ## Usage
 
 Lanyon is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
-
 
 ## Options
 
 Lanyon includes some customizable options, typically applied via classes on the `<body>` element.
 
-
 ### Sidebar menu
 
 Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
 
-```
+```text
 ---
 layout: page
 title: About
@@ -40,7 +36,6 @@ title: About
 ```
 
 **Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
-
 
 ### Themes
 
@@ -63,7 +58,6 @@ To use a theme, add any one of the available theme classes to the `<body>` eleme
 
 To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/lanyon/blob/master/public/css/lanyon.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
 
-
 ### Reverse layout
 
 ![Lanyon with reverse layout](https://f.cloud.github.com/assets/98681/1825265/be03f2e4-71b0-11e3-89f1-360705524495.png)
@@ -76,7 +70,6 @@ Reverse the page orientation with a single class.
   ...
 </body>
 ```
-
 
 ### Sidebar overlay instead of push
 
@@ -112,7 +105,6 @@ Using Liquid you can also conditionally show the sidebar open on a per-page basi
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" {% if page.title =="Home" %}checked{% endif %}>
 ```
 
-
 ## Tags
 
 Create tags with `_tools/createTag url-name "Pretty Name"`. Tag posts by adding `tags: [tag-name]` to the front matter of post files.
@@ -121,7 +113,7 @@ For example:
 
 ### 1. Create a new tag rendered as *Using git* on pages, but referenced as `using-git` in source files
 
-```
+```sh
 $ ./_tools/createTag "Using git"
 ```
 
@@ -132,7 +124,7 @@ Note: This script converts the pretty name you specify (e.g. *Using git*) into a
 
 ### 2. Create a new post file: `_posts/2014-12-31-how-to-clone-a-repository.md`
 
-```
+```text
 ---
 layout: post
 title: How to clone a repository
@@ -144,7 +136,7 @@ See the [GitHub topic](https://help.github.com/articles/fork-a-repo/). It's pret
 
 ### 3. Add, commit, and push the updates:
 
-```
+```sh
 $ git add _data/tags.yml
 $ git add tag/using-git.md
 $ git add _posts/2014-12-31-how-to-clone-a-repository.md
@@ -159,13 +151,12 @@ Lanyon has two branches, but only one is used for active development.
 - `master` for development.  **All pull requests should be to submitted against `master`.**
 - `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
 
-
 ## Author
 
 **Mark Otto**
+
 - <https://github.com/mdo>
 - <https://twitter.com/mdo>
-
 
 ## License
 

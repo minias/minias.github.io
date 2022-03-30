@@ -1,9 +1,10 @@
 ---
 layout: post
 title: ElasticSearch_bulk_API
+tags: []
 ---
 
-```
+```json
 {"index":{"_index":"test","_id":"1"}}
 {"field":"value one"}
 {"index":{"_index":"test","_id":"2"}}
@@ -14,6 +15,7 @@ title: ElasticSearch_bulk_API
 {"update":{"_index":"test","_id":"1"}}
 {"doc":{"field":"value two"}}
 ```
+
 ```bash
-$ curl -XPOST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
+\$ curl -XPOST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
 ```

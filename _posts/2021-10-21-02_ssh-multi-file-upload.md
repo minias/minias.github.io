@@ -1,6 +1,7 @@
 ---
  layout : post
  title : ssh-auto-login 이용한 ssh 멀티파일 업로드/다운로드
+ tags: []
 ---
 
 ```bash
@@ -23,6 +24,6 @@ do
   while read line
   do
     echo $IP.”:”.$line
-  done < $2 
+  done < $2
 done < $1
 ```
