@@ -591,11 +591,12 @@ a.pagination-item:hover {
   box-sizing: border-box;
   margin: 20px auto;
   padding: 6px;
-  /* font-size: 20px; */
   background-color: #268bd2;
   color: white;
-  /* border: #dbdbdb 2px solid; */
   border-radius: 8px;
   text-decoration: none;
 }
-
+.tags A:link {text-decoration:none;}
+.tags A:visited {text-decoration:none;}
+.tags A:hover {text-decoration:none;}
+.tags A:active {text-decoration:none;}
