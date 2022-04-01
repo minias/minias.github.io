@@ -11,8 +11,8 @@ tags: [config]
 
 ### 사용된 패키지 
 
-- [https://github.com/appleboy/ssh-action](appleboy/ssh-action)
-- [https://github.com/appleboy/scp-action](appleboy/scp-action)
+- [appleboy/ssh-action](https://github.com/appleboy/ssh-action)
+- [appleboy/scp-action](https://github.com/appleboy/scp-action)
 
 ```yml
 # .github/workflow/main.yml
