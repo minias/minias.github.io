@@ -1,10 +1,13 @@
 ---
 layout: post
-title: geojson 파일
+title: Github Action CI/CD
 tags: [config]
 ---
 
-## Github Action CD/CD
+## Github Action을 이용하여 원격서버에 자동 배포
+
+> setting 탭의 settings -> secrets 메뉴에 Key=Value 형태로 설정할수 있다.
+> 또는, ssh publish_key를 등록하여 자동화 시킬수 있다. 
 
 ```yml
 # .github/workflow/main.yml
@@ -35,7 +38,7 @@ jobs:
       - name: Build # React Build
         run: npm run build
 
-      # 서버에서 기존의 dist 폴더를 삭제한다.
+      # [https://github.com/appleboy/ssh-action](appleboy/ssh-action)를 이용하여 서버에서 기존의 dist 폴더를 삭제한다.
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@develop
         with:
@@ -46,7 +49,7 @@ jobs:
           script: |
             rm -rf ~/bvap-console-dev/dist
 
-      # github에서 dist	폴더를 서버로 복사한다.
+      # [https://github.com/appleboy/scp-action](appleboy/scp-action)를 이용하여 github에서 dist 폴더를 서버로 복사한다.
       - name: copy file via ssh password
         uses: appleboy/scp-action@develop
         with:
