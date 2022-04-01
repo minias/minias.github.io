@@ -9,6 +9,11 @@ tags: [config]
 > setting 탭의 settings -> secrets 메뉴에 Key=Value 형태로 설정할수 있다.
 > 또는, ssh publish_key를 등록하여 자동화 시킬수 있다. 
 
+### 사용된 패키지 
+
+- [https://github.com/appleboy/ssh-action](appleboy/ssh-action)
+- [https://github.com/appleboy/scp-action](appleboy/scp-action)
+
 ```yml
 # .github/workflow/main.yml
 name: build # Workflow 이름
@@ -27,10 +32,10 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          key: $ \{\{ runner.OS }}-build-$\{\{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            $\{\{ runner.OS }}-build-
+            $\{\{ runner.OS }}-
 
       - name: Install Dependencies # 의존 파일 설치
         run: npm install
@@ -38,25 +43,25 @@ jobs:
       - name: Build # React Build
         run: npm run build
 
-      # [https://github.com/appleboy/ssh-action](appleboy/ssh-action)를 이용하여 서버에서 기존의 dist 폴더를 삭제한다.
+      # appleboy/ssh-action를 이용하여 서버에서 기존의 dist 폴더를 삭제한다.
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@develop
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: $\{\{ secrets.HOST }}
+          username: $\{\{ secrets.USERNAME }}
+          password: $\{\{ secrets.PASSWORD }}
+          port: $\{\{ secrets.PORT }}
           script: |
             rm -rf ~/bvap-console-dev/dist
 
-      # [https://github.com/appleboy/scp-action](appleboy/scp-action)를 이용하여 github에서 dist 폴더를 서버로 복사한다.
+      # appleboy/scp-action를 이용하여 github에서 dist 폴더를 서버로 복사한다.
       - name: copy file via ssh password
         uses: appleboy/scp-action@develop
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: $\{\{ secrets.HOST }}
+          username: $\{\{ secrets.USERNAME }}
+          password: $\{\{ secrets.PASSWORD }}
+          port: $\{\{ secrets.PORT }}
           source: 'dist'
           target: '~/bvap-console-dev/dist'
 ```
