@@ -600,3 +600,8 @@ a.pagination-item:hover {
 .tags A:visited {text-decoration:none;}
 .tags A:hover {text-decoration:none;}
 .tags A:active {text-decoration:none;}
+
+img[src$="center"] {
+  display:block;
+  margin: 0 auto;
+}
