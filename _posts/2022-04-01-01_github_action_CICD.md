@@ -1,7 +1,7 @@
 ---
 layout: post
 title: geojson 파일
-tags: [tech]
+tags: [config]
 ---
 
 ## Github Action CD/CD
