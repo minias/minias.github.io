@@ -21,3 +21,6 @@
 
 - slug: config
   name: config
+
+- slug: gis
+  name: GIS
