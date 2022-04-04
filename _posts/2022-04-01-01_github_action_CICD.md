@@ -7,9 +7,9 @@ tags: [config]
 ## Github Action을 이용하여 원격서버에 자동 배포
 
 > setting 탭의 settings -> secrets 메뉴에 Key=Value 형태로 설정할수 있다.
-> 또는, ssh publish_key를 등록하여 자동화 시킬수 있다. 
+> 또는, ssh publish_key를 등록하여 자동화 시킬수 있다.
 
-### 사용된 패키지 
+### 사용된 패키지
 
 - [appleboy/ssh-action](https://github.com/appleboy/ssh-action)
 - [appleboy/scp-action](https://github.com/appleboy/scp-action)
