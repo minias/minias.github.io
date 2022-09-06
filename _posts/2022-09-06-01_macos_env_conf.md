@@ -1,13 +1,7 @@
 ---
 layout: post
 title: 맥미니 환경 설정
-tags: [config]
----
-
-# 맥미니 환경 설정
-
-# **맥 설치 환경**
-
+tags: [macos,config]
 ---
 
 # **맥미니 설치 기본은 brew**
