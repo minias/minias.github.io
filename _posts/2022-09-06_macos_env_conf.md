@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setting VIM
+title: 맥미니 환경 설정
 tags: [config]
 ---
 
