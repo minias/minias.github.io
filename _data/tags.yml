@@ -24,3 +24,12 @@
 
 - slug: gis
   name: GIS
+
+- slug: smartcontract
+  name: smartcontract
+
+- slug: ethereum
+  name: Ethereum
+
+- slug: remix
+  name: Remix
