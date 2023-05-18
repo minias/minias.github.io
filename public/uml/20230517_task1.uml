@@ -1,0 +1,245 @@
+@startgantt
+@startgantt
+<style>
+ganttDiagram {
+	arrow {
+		LineColor grey
+	}
+    Separator {
+        LineColor black
+		Margin 0
+		Padding 0        		
+	}  
+    task {
+        BackGroundColor GreenYellow
+        LineColor Green 
+        FontSize 9
+        unstarted {
+            BackGroundColor Fuchsia 
+            LineColor FireBrick
+        }   
+    }  
+    milestone {        
+        LineColor white
+        BackGroundColor grey
+        FontSize 7
+        FontColor grey
+        FontStyle italic
+    } 
+}
+</style>
+
+'language ko
+language en
+title CPESO Phase1's WBS
+'타이틀 숨기기
+hide footbox
+'쿼터 표시
+'projectscale quarterly 
+'주간 표시
+'printscale weekly
+'줌
+printscale weekly zoom 2
+'토요일 휴무
+'saturday are closed 
+'saturday is colored in #08F
+'일요일 휴무
+'sunday are closed 
+sunday is colored in grey
+'오늘
+today is colored in #AAF
+'today is 30 days after start and is colored in #AAF
+'강조색
+'2023-01-18 to 2021-01-22 are colored in salmon 
+2023-09-13 are colored in red 
+
+Project starts 2023-05-03
+
+[start] happens at 2023-05-03
+[first open] happens at 2023-09-13
+[start] displays on same row as [first open]
+
+-- Jerrmy Layer --
+
+'[기획] as [Planning] lasts 7 days
+[Planning] lasts 2 weeks
+'[Planning] is 10% completed
+[Planning] is colored in Lavender/LightBlue
+
+-- Minias Layer --
+
+[Rearch] lasts 2 weeks
+'[Rearch] is 10% completed
+[Rearch] is colored in Lavender/LightBlue
+
+'[설계] as [archteure] lasts 2 weeks
+[archteure] lasts 14 days
+'[archteure] is 0% completed
+[Rearch]->[archteure]
+
+[info DB] as [DB archteure1] lasts 2 weeks
+'[DB archteure1] is 0% completed
+[archteure]->[DB archteure1]
+[info DB] displays on same row as [Planning]
+
+[asset DB] as [DB archteure2] lasts 2 weeks
+'[DB archteure2] is 0% completed
+[archteure]->[asset DB]
+
+[Coin] lasts 4 weeks
+'[Coin] is 0% completed
+[Rearch]->[Coin]
+
+[CAPI] as [coinapi] lasts 3 weeks
+'[CAPI] is 0% completed
+[Coin]->[CAPI]
+[CAPI] displays on same row as [Coin]
+
+[Demo] lasts 2 weeks
+'[Demo] is 0% completed
+[CAPI]->[Demo]
+[Demo] displays on same row as [Coin]
+
+[CerTick] lasts 6 weeks
+'[CerTick] is 0% completed
+[Demo]->[CerTick]
+[CerTick] displays on same row as [Coin]
+
+[SAPI] as [Service API] lasts 4 weeks
+'[SAPI] is 0% completed
+[Coin]->[SAPI]
+[SAPI] displays on same row as [Planning]
+
+[Marketing] lasts 4 weeks
+'[Marketing] is 0% completed
+[SAPI]->[Marketing]
+[Marketing] displays on same row as [Planning]
+
+-- Backend Layer --
+
+[Back phase 1] as [BO] lasts 4 weeks
+'[BO] is 0% completed
+[archteure]->[BO]
+
+[Back phase 2] as [BO2] lasts 4 weeks
+'[BO2] is 0% completed
+[BO]->[BO2]
+[BO2] displays on same row as [BO]
+
+-- Front Layer --
+[Service Front] as [React2] lasts 3 weeks
+'[React2] is 0% completed
+[BO]->[React2]
+'[React2] displays on same row as [React]
+
+[Affiliated Front] as [React] lasts 28 days
+'[React] is 0% completed
+[SAPI]->[React]
+
+[Foundation Front] lasts 2 weeks
+'[Foundation Front]  is 0% completed
+[React]->[Foundation Front] 
+[Foundation Front] displays on same row as [React]
+
+[Official Front] lasts 3 weeks
+'[Official Front]  is 0% completed
+[Foundation Front]->[Official Front] 
+
+-- App Layer --
+
+[Servie App] As [Android2] lasts 4 weeks
+'[Android2] is 0% completed
+[React2]->[Android2]
+'[Android2] displays on same row as [archteure]
+
+[Affiliated App] AS [Android] lasts 4 weeks
+'[Android] is 0% completed
+[React]->[Android]
+[Android] displays on same row as [DB archteure2]
+
+-- QA/QC Layer --
+
+[QA] lasts 8 weeks
+'[QA] is 0% completed
+[Demo]->[QA]
+
+-- Jo Layer --
+
+[Design] lasts 4 weeks
+'[Design] is 0% completed
+[Planning]->[Design]
+
+[Design2] lasts 3 weeks
+'[Design2] is 0% completed
+[Coin]->[Design2]
+[Design2] displays on same row as [Design]
+
+[Design3] lasts 4 weeks
+'[Design3] is 0% completed
+[SAPI]->[Design3]
+[Design3] displays on same row as [Design]
+
+[Design4] lasts 5 weeks
+'[Design4] is 0% completed
+[Affiliated Front]->[Design4]
+[Design4] displays on same row as [Design]
+
+
+-- Review Phase --
+
+[R1] as [Review 01] happens at 2023-05-08
+[R2] as [Review 02] happens on 1 weeks after [Review 01]'s end
+[R3] as [Review 03] happens on 1 weeks after [Review 02]'s end
+[R4] as [Review 04] happens on 1 weeks after [Review 03]'s end
+[R5] as [Review 05] happens on 1 weeks after [Review 04]'s end
+[R6] as [Review 06] happens on 1 weeks after [Review 05]'s end
+[R7] as [Review 07] happens on 1 weeks after [Review 06]'s end
+[R8] as [Review 08] happens on 1 weeks after [Review 07]'s end
+[R9] as [Review 09] happens on 1 weeks after [Review 08]'s end
+[R10] as [Review 10] happens on 1 weeks after [Review 09]'s end
+[R11] as [Review 11] happens on 1 weeks after [Review 10]'s end
+[R12] as [Review 12] happens on 1 weeks after [Review 11]'s end
+[R13] as [Review 13] happens on 1 weeks after [Review 12]'s end
+[R14] as [Review 14] happens on 1 weeks after [Review 13]'s end
+[R15] as [Review 15] happens on 1 weeks after [Review 14]'s end
+[R16] as [Review 16] happens on 1 weeks after [Review 15]'s end
+[R17] as [Review 17] happens on 1 weeks after [Review 16]'s end
+
+[R1]  displays on same row as [R1]
+[R2]  displays on same row as [R1]
+[R3]  displays on same row as [R1]
+[R4]  displays on same row as [R1]
+[R5]  displays on same row as [R1]
+[R6]  displays on same row as [R1]
+[R7]  displays on same row as [R1]
+[R8]  displays on same row as [R1]
+[R9]  displays on same row as [R1]
+[R10] displays on same row as [R1]
+[R11] displays on same row as [R1]
+[R12] displays on same row as [R1]
+[R13] displays on same row as [R1]
+[R14] displays on same row as [R1]
+[R15] displays on same row as [R1]
+[R16] displays on same row as [R1]
+[R17] displays on same row as [R1]
+
+'Separator just 1 days before [R1]'s start
+Separator just at [R1]'s start
+Separator just at [R2]'s start
+Separator just at [R3]'s start
+Separator just at [R4]'s start
+Separator just at [R5]'s start
+Separator just at [R6]'s start
+Separator just at [R7]'s start
+Separator just at [R8]'s start
+Separator just at [R9]'s start
+Separator just at [R10]'s start
+Separator just at [R11]'s start
+Separator just at [R12]'s start
+Separator just at [R13]'s start
+Separator just at [R14]'s start
+Separator just at [R15]'s start
+Separator just at [R16]'s start
+Separator just at [R17]'s start
+
+@endgantt
