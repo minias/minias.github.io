@@ -6,6 +6,7 @@ url:                 https://minias.github.io
 baseurl:             ''
 paginate:            20
 permalink:           pretty
+markdown: kramdown
 
 # About/contact
 author:
