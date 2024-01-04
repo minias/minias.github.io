@@ -33,3 +33,9 @@
 
 - slug: remix
   name: Remix
+
+- slug: flutter
+  name: flutter
+
+- slug: error
+  name: error
