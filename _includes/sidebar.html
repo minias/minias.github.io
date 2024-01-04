@@ -9,7 +9,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">홈</a>
+    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">Home</a>
 
     {% comment %}
       The code below dynamically generates a sidebar nav of pages with
@@ -24,7 +24,7 @@
         {% endif %}
       {% endif %}
     {% endfor %}
-    <a class="sidebar-nav-item" href="https://github.dev/minias/minias.github.io">작성</a>    
+    <a class="sidebar-nav-item" href="https://github.dev/minias/minias.github.io">Write</a>    
 
   </nav>
 

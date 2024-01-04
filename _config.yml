@@ -1,7 +1,7 @@
 # Setup
 title:               Minias
-tagline:             '미니어스 기술 블로그'
-description:         '잡다한 팁과 지식정리 및 공유'
+tagline:             "Tech blog's"
+description:         'Share tips and knowledge.'
 url:                 https://minias.github.io
 baseurl:             ''
 paginate:            20
@@ -12,7 +12,7 @@ markdown: kramdown
 author:
   name:              Minias
   url:               https://minias.github.io
-  email:             admin@gnuhacker.com
+  email:             gnuhacker@gmail.com
 
 # Gems
 plugins:

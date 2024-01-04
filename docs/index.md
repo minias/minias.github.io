@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 목록
+title: list
 ---
 
 ## Schedule
