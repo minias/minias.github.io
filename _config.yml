@@ -2,7 +2,7 @@
 title:               Minias
 tagline:             "Tech blog's"
 description:         'Share tips and knowledge.'
-url:                 https://minias.github.io
+url:                 https://gnuhacker.com
 baseurl:             ''
 paginate:            20
 permalink:           pretty
@@ -11,7 +11,7 @@ markdown: kramdown
 # About/contact
 author:
   name:              Minias
-  url:               https://minias.github.io
+  url:               https://gnuhacker.com
   email:             gnuhacker@gmail.com
 
 # Gems
