@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 소개
+title: Introduction
 ---
 
  - "소" 가 없습니다.
