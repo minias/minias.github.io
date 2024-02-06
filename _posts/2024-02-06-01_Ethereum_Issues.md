@@ -1,6 +1,6 @@
 ---
 layout: post
-title: BlockChain BMT
+title: 이더리움 문제
 tags: [blockchain,ethereum,bmt]
 ---
 
