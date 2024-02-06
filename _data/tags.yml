@@ -42,3 +42,15 @@
 
 - slug: go
   name: Go
+
+- slug: blockchain
+  name: blockchain
+
+- slug: bmt
+  name: bmt
+
+- slug: dlt
+  name: dlt
+
+- slug: dag
+  name: dag
