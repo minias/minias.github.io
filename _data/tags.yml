@@ -54,3 +54,6 @@
 
 - slug: dag
   name: dag
+
+- slug: testnet
+  name: testnet
