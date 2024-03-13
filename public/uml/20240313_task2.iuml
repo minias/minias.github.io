@@ -1,0 +1,109 @@
+@startgantt
+@startgantt
+<style>
+ganttDiagram {
+	arrow {
+		LineColor grey
+	}
+    Separator {
+        LineColor black
+		Margin 0
+		Padding 0        		
+	}  
+    task {
+        BackGroundColor GreenYellow
+        LineColor Green 
+        FontSize 9
+        unstarted {
+            BackGroundColor Fuchsia 
+            LineColor FireBrick
+        }   
+    }  
+    milestone {        
+        LineColor white
+        BackGroundColor grey
+        FontSize 7
+        FontColor grey
+        FontStyle italic
+    } 
+}
+</style>
+
+'language ko
+language en
+title CPESO Phase2's WBS
+'타이틀 숨기기
+hide footbox
+'쿼터 표시
+'projectscale quarterly 
+'주간 표시
+'printscale weekly
+'줌
+printscale weekly zoom 2
+'토요일 휴무
+'saturday are closed 
+'saturday is colored in #08F
+'일요일 휴무
+'sunday are closed 
+sunday is colored in grey
+'오늘
+today is colored in #AAF
+'today is 30 days after start and is colored in #AAF
+'강조색
+'2023-01-18 to 2021-01-22 are colored in salmon 
+' Phase2 end date
+2024-06-01 are colored in red  
+
+Project starts 2024-03-01
+
+[start] happens at 2024-03-18
+[first open] happens at 2024-06-02
+[start] displays on same row as [first open]
+
+-- Design Layer --
+
+[Design] lasts 2 weeks
+[start]->[Design]
+
+[Design2] lasts 2 weeks
+[Design]->[Design2]
+[Design2] displays on same row as [Design]
+
+[Design3] lasts 2 weeks
+[Design2]->[Design3]
+[Design3] displays on same row as [Design]
+
+-- App Layer --
+[Android] lasts 6 weeks
+[start]->[Android]
+
+-- Backoffice Layer --
+[Backoffice] AS [BO] lasts 5 weeks
+[Design2]->[BO]
+
+-- Intra Layer --
+[Product Intra] AS [PI] lasts 3 weeks
+[start]->[PI]
+[MainNet Intra] AS [MI] lasts 6 weeks
+[PI]->[MI]
+
+-- MainNet Layer --
+[Vault MainNet 1] AS [VMN1] lasts 4 weeks
+[start]->[VMN1]
+[Vault MainNet 2] AS [VMN2] lasts 4 weeks
+[VMN1]->[VMN2]
+[VMN2] displays on same row as [VMN1]
+
+-- QA/QC Layer --
+[Inpra Test] AS [IT] lasts 8 days
+[PI]->[IT]
+
+[Alpha Test] AS [AT] lasts 8 days
+[Android]->[AT]
+[AT] displays on same row as [IT]
+
+[Beta Test] AS [BT] lasts 8 days
+[BO]->[BT]
+[BT] displays on same row as [IT]
+
+@endgantt
