@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 # Security Policy
 
 ## Supported Versions
