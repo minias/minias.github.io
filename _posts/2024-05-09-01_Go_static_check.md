@@ -28,7 +28,11 @@ package main
 
 ## 오류메시지 확인
 
-|확인하다|간단한 설명|
+|Check| 설명|
+|---|---|
+|[U1000](https://github.com/dominikh/go-tools/blob/master/unused/unused.go#L175)|사용되지 않는 변수,상수,함수,기타등등|
+
+|Check| 설명|
 |---|---|
 |[SA    ](https://staticcheck.io/docs/checks/#SA    )|staticcheck|
 |[SA1   ](https://staticcheck.io/docs/checks/#SA1   )|표준 라이브러리의 다양한 오용|
