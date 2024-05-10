@@ -20,26 +20,26 @@ for (var i = 0, length = links.length; i < length; i++) {
     links[i].target = '_blank';
   }
 }
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  //const el = document.getElementById('scroll');
-  if (document.getElementById('scroll')) {
-    // Scroll | button show/hide
-    window.addEventListener('scroll', () => {
-      if (document.querySelector('html').scrollTop > 100) {
-        document.getElementById('go-top').style.display = "block";
-      } else {
-        document.getElementById('go-top').style.display = "none";
-      }
-    });
-    // back to top
-    document.getElementById('go-top').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
+// scroll to Top
+window.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById('scroll');
+  const top = document.getElementById('go-top');
+  if (el) {
+    var backToTop = () => {
+      // button show/hide
+      window.addEventListener('scroll', () => {
+        if (document.querySelector('html').scrollTop > 100) {
+          top.style.display = "block !important";
+        } else {
+          top.style.display = "none !important";
+        }
       });
-    })
-  }
+      // back to top click event listener
+      top.addEventListener('click', () => {
+        window.scrollTo({top: 0,left: 0,behavior: 'smooth'});
+      })
+    }
+    backToTop();
+  } 
 });
  
