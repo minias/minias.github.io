@@ -39,4 +39,4 @@ var backToTop = () => {
     });
   })
 };
-//backToTop(); 
+backToTop(); 
