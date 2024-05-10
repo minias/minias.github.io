@@ -31,8 +31,7 @@
         behavior: 'smooth'
       });
     }, true);
-  };
-  backToTop();   
+  };  
 })(document);
 
 var links = document.querySelectorAll('a');
@@ -41,3 +40,5 @@ for (var i = 0, length = links.length; i < length; i++) {
     links[i].target = '_blank';
   }
 }
+
+backToTop(); 
