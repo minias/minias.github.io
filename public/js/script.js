@@ -1,7 +1,9 @@
 (function (document) {
+  var html = document.querySelector('html');
   var toggle = document.querySelector('.sidebar-toggle');
   var sidebar = document.querySelector('#sidebar');
   var checkbox = document.querySelector('#sidebar-checkbox');
+  var goTop = document.getElementById('go-top');
 
   document.addEventListener('click', function (e) {
     var target = e.target;
@@ -15,20 +17,20 @@
   var backToTop = () => {
     // Scroll | button show/hide
     window.addEventListener('scroll', () => {
-      if (document.querySelector('html').scrollTop > 100) {
-        document.getElementById('go-top').style.display = "block";
+      if (html.scrollTop > 100) {
+        goTop.style.display = "block";
       } else {
-        document.getElementById('go-top').style.display = "none";
+        goTop.style.display = "none";
       }
     });
     // back to top
-    document.getElementById('go-top').addEventListener('click', () => {
+    goTop.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth'
       });
-    })
+    }, true);
   };
   backToTop();   
 })(document);
