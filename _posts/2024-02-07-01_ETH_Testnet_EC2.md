@@ -93,3 +93,5 @@ nohup geth --sepolia --http --http.api eth,net,engine,admin --datadir data -allo
  4. [openssl](https://www.openssl.org/docs/)
  5. [이더리움 블록체인 크기 차트
 ](https://blockchair.com/ko/ethereum/charts/blockchain-size)
+ 6. [1TB 스토리지 장벽 회피: 이더리움의 DHT를 활용하여
+피어 스토리지 요구사항 감소](https://dl.acm.org/doi/pdf/10.1145/3594556.3594625)
