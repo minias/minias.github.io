@@ -25,3 +25,5 @@ plugins:
 # Custom vars
 version:             1.1.0 
 heme: jekyll-theme-tactile
+
+exclude: [changelog.md,SECURITY.md, LICENSE.md, README.md, Gemfile, Gemfile.lock]
