@@ -6,9 +6,13 @@ tags: [ethereum,blockchain]
 
 ## Ethereum VM(EVM) Opcode 및 명령어 참조
 
+> 시간이 지날수록 Opcode Costs가 변경될 가능성이 높습니다. 단지 참고만하세요.
+
+* [evm 최신 Opcode](https://www.evm.codes/)
+
 |연산코드|이름|설명|추가 정보|가스|
 |---|---|:--------|---|---|
-|0x00       |      STOP      |실행을 중지합니다.|-|0|
+|0x00       |      STOP      |실행 중지|-|0|
 |0x01       |      ADD       |덧셈 연산|-|3|
 |0x02       |      MUL       |곱셈 연산|-|5|
 |0x03       |      SUB       |빼기 연산|-|3|
@@ -142,8 +146,8 @@ tags: [ethereum,blockchain]
 |0xa0       |      LOG0      |주제가 없는 로그 기록 추가|-|375|
 |0xa1       |      LOG1      |하나의 주제로 로그 기록 추가|-|750|
 |0xa2       |      LOG2      |두 가지 주제로 로그 기록 추가|-|1125|
-|0xa3       |      LOG3      |세 가지 주제로 로그 기록을 추가합니다.|-|1500|
-|0xa4       |      LOG4      |4개 주제로 로그 기록 추가|-|1875년|
+|0xa3       |      LOG3      |세 가지 주제로 로그 기록을 추가|-|1500|
+|0xa4       |      LOG4      |4개 주제로 로그 기록 추가|-|1875|
 |0xa5-0xaf  |     Unused     |-|||
 |0xb0       |     JUMPTO     |임시 libevmasm의 숫자가 다릅니다.|[EIP 615](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-615.md)||
 |0xb1       |     JUMPIF     |잠정적인|[EIP 615](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-615.md)||
@@ -155,15 +159,15 @@ tags: [ethereum,blockchain]
 |0xb9       |    PUTLOCAL    |잠정적인|[EIP 615](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-615.md)||
 |0xba       |    GETLOCAL    |잠정적인|[EIP 615](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-615.md)||
 |0xbb-0xe0  |     Unused     |-|||
-|0xe1       |   SLOADBYTES   |pyethereum에서만 참조됩니다.|-|-|
-|0xe2       |  SSTOREBYTES   |pyethereum에서만 참조됩니다.|-|-|
-|0xe3       |     SSIZE      |pyethereum에서만 참조됩니다.|-|-|
+|0xe1       |   SLOADBYTES   |pyethereum에서만 참조|-|-|
+|0xe2       |  SSTOREBYTES   |pyethereum에서만 참조|-|-|
+|0xe3       |     SSIZE      |pyethereum에서만 참조|-|-|
 |0xe4-0xef  |     Unused     |-|||
 |0xf0       |     CREATE     |관련 코드로 새 계정 만들기|-|32000|
-|0xf1       |      CALL      |계정으로 메시지 호출|-|복잡한|
-|0xf2       |    CALLCODE    |대체 계정의 코드를 사용하여 이 계정으로 메시지 통화|-|복잡한|
+|0xf1       |      CALL      |계정으로 메시지 호출|-|Complex|
+|0xf2       |    CALLCODE    |대체 계정의 코드를 사용하여 이 계정으로 메시지 통화|-|Complex|
 |0xf3       |     RETURN     |출력 데이터를 반환하는 실행 중지|-|0|
-|0xf4       |  DELEGATECALL  |대체 계정의 코드를 사용하여 이 계정에 메시지 호출을 하지만 대체 계정의 코드를 사용하여 이 계정에 계속 유지됩니다.|-|복잡한|
+|0xf4       |  DELEGATECALL  |대체 계정의 코드를 사용하여 이 계정에 메시지 호출을 하지만 대체 계정의 코드를 사용하여 이 계정에 계속 유지|-|Complex|
 |0xf5       |    CREATE2     |새 계정을 만들고 생성 주소를 다음으로 설정하세요.sha3(sender + sha3(init code)) % 2**160|-||
 |0xf6-0xf9  |     Unused     |-|-||
 |0xfa       |   STATICCALL   |CALL과 유사하지만 상태를 수정하지 않습니다.|-|40|
@@ -232,14 +236,14 @@ tags: [ethereum,blockchain]
 |54|0x59|MSIZE|2|base|0|1|Get the size of active memory in bytes.||
 |55|0x5a|GAS|2|base|0|1|Get the amount of available gas, including the corresponding reduction for the cost of this instruction.||
 |56|0x5b|JUMPDEST|1||0|0|Mark a valid destination for jumps||
-|57|0x60 -- 0x7f|PUSH*|3|verylow|0|1|Place * byte item on stack. 0 < * <= 32||
-|58|0x80 -- 0x8f|DUP*|3|verylow|*|* + 1|Duplicate *th stack item. 0 < * <= 16||
+|57|0x60 -- 0x7f|PUSH*|3|verylow|0|1|Place \* byte item on stack. 0 < \* <= 32||
+|58|0x80 -- 0x8f|DUP*|3|verylow|*|* + 1|Duplicate *th stack item. 0 < \* <= 16||
 |59|0x90 -- 0x9f|SWAP*|3|verylow|* + 1|* + 1|Exchange 1st and (* + 1)th stack items.||
 |60|0xa0|LOG0|375 + 8 * (number of bytes in log data)||2|0|Append log record with no topics.|375 is paid for operation plus 8 for each byte in data to be logged.|
 |61|0xa1|LOG1|375 + 8 * (number of bytes in log data) + 375||3|0|Append log record with one topic.|375 is paid for operation plus 8 for each byte in data to be logged plus 375 for the 1 topic to be logged.|
-|62|0xa2|LOG2|375 + 8 * (number of bytes in log data) + 2 * 375||4|0|Append log record with two topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 2 * 375 for the 2 topics to be logged.|
-|63|0xa3|LOG3|375 + 8 * (number of bytes in log data) + 3 * 375||5|0|Append log record with three topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 3 * 375 for the 3 topics to be logged.|
-|64|0xa4|LOG4|375 + 8 * (number of bytes in log data) + 4 * 375||6|0|Append log record with four topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 4 * 375 for the 4 topics to be logged.|
+|62|0xa2|LOG2|375 + 8 \* (number of bytes in log data) + 2 * 375||4|0|Append log record with two topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 2 * 375 for the 2 topics to be logged.|
+|63|0xa3|LOG3|375 + 8 \* (number of bytes in log data) + 3 * 375||5|0|Append log record with three topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 3 * 375 for the 3 topics to be logged.|
+|64|0xa4|LOG4|375 + 8 \* (number of bytes in log data) + 4 * 375||6|0|Append log record with four topics.|375 is paid for operation plus 8 for each byte in data to be logged plus 4 * 375 for the 4 topics to be logged.|
 |65|0xf0|CREATE|32000||3|1|Create a new account with associated code.||
 |66|0xf1|CALL|Complex -- see yellow paper Appendix H||7|1|Message-call into an account.||
 |67|0xf2|CALLCODE|Complex -- see yellow paper Appendix H||7|1|Message-call into this account with an alternative account’s code.||
