@@ -9,9 +9,9 @@ h1, h2, h3, h4, h5, h6 {font-weight: 400;color: #313131;letter-spacing: -.025rem
 @media (min-width: 80em) {.container {max-width: 60rem;} .sidebar {visibility: visible; }}
 @media (max-height: 20em) {.container {min-height: 60rem;}}
 .masthead {padding-top:1rem;padding-bottom: 1rem;margin-bottom: 3rem;border-bottom: 1px solid #eee;}
-.masthead-title {vertical-align:middle;margin-top: 0;margin-bottom: 0;color: #505050;}
-.masthead-title a {color: #505050;}
-.masthead-title small {font-size: 75%;font-weight: 400;color: #c0c0c0;letter-spacing: 0;}
+.masthead-title {vertical-align:middle;margin-top: 0;margin-bottom: 0;color: #000000;}
+.masthead-title a {color: #000000;}
+.masthead-title small {font-size: 75%;font-weight: 400;color: #000000;letter-spacing: 0;}
 @media (max-width: 48em) {
 .masthead-title {text-align: center;}
 .masthead-title small {display: none;}
