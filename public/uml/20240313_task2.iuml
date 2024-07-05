@@ -1,5 +1,4 @@
 @startgantt
-@startgantt
 <style>
 ganttDiagram {
 	arrow {
@@ -8,24 +7,24 @@ ganttDiagram {
     Separator {
         LineColor black
 		Margin 0
-		Padding 0        		
-	}  
+		Padding 0
+	}
     task {
         BackGroundColor GreenYellow
-        LineColor Green 
+        LineColor Green
         FontSize 9
         unstarted {
-            BackGroundColor Fuchsia 
+            BackGroundColor Fuchsia
             LineColor FireBrick
-        }   
-    }  
-    milestone {        
+        }
+    }
+    milestone {
         LineColor white
         BackGroundColor grey
         FontSize 7
         FontColor grey
         FontStyle italic
-    } 
+    }
 }
 </style>
 
@@ -35,24 +34,24 @@ title CPESO Phase2's WBS
 '타이틀 숨기기
 hide footbox
 '쿼터 표시
-'projectscale quarterly 
+'projectscale quarterly
 '주간 표시
 'printscale weekly
 '줌
 printscale weekly zoom 2
 '토요일 휴무
-'saturday are closed 
+'saturday are closed
 'saturday is colored in #08F
 '일요일 휴무
-'sunday are closed 
+'sunday are closed
 sunday is colored in grey
 '오늘
 today is colored in #AAF
 'today is 30 days after start and is colored in #AAF
 '강조색
-'2023-01-18 to 2021-01-22 are colored in salmon 
+'2023-01-18 to 2021-01-22 are colored in salmon
 ' Phase2 end date
-2024-06-01 are colored in red  
+2024-06-01 are colored in red
 
 Project starts 2024-03-01
 

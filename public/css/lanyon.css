@@ -53,9 +53,9 @@ h1, h2, h3, h4, h5, h6 {font-weight: 400;color: #313131;letter-spacing: -.025rem
 .related-posts li a:hover {color: #268bd2;text-decoration: none;}
 .related-posts li a:hover small {color: inherit;}
 .pagination {overflow: hidden; margin-left: -1rem;margin-right: -1rem;font-family: "PT Sans", Helvetica, Arial, sans-serif;color: #ccc;text-align: center;}
-.pagination-item {display: block;padding: 1rem;border: 1px solid #eee;}
+.pagination-item {display: block;padding: 1rem;border: 1px solid #20c997;}
 .pagination-item:first-child {margin-bottom: -1px;}
-a.pagination-item:hover {background-color: #f5f5f5;}
+a.pagination-item:hover {background-color: #20c997;}
 @media (min-width: 30em) {
 .pagination {margin: 3rem 0;}
 .pagination-item {float: left;width: 50%;}
