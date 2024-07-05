@@ -1,7 +1,7 @@
 <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
@@ -24,11 +24,11 @@
         {% endif %}
       {% endif %}
     {% endfor %}
-    <a class="sidebar-nav-item" href="https://github.dev/minias/minias.github.io">Write</a>    
+    <a class="sidebar-nav-item" href="https://github.dev/minias/minias.github.io">Write</a>
 
   </nav>
 
-  <div class="sidebar-item">    
+  <div class="sidebar-item">
     <p>
       &copy; 2021~{{ site.time | date: '%Y' }}. All rights reserved.
     </p>
