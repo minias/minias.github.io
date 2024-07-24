@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE> The Network Administrator's Guide V0.4: Serial Line IP</TITLE>
+ <LINK HREF="NetAdminGuide-KLDP-8.html" REL=next>
+ <LINK HREF="NetAdminGuide-KLDP-6.html" REL=previous>
+ <LINK HREF="NetAdminGuide-KLDP.html#toc7" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="NetAdminGuide-KLDP-8.html">다음</A>
+<A HREF="NetAdminGuide-KLDP-6.html">이전</A>
+<A HREF="NetAdminGuide-KLDP.html#toc7">차례</A>
+<HR>
+<H2><A NAME="s7">7. Serial Line IP</A></H2>
+
+<P>시리얼 라인 프로토콜인 SLIP과 PPP는 인터넷에 접속할 때 사용하는 프로토콜이다. 모뎀과
+는 별개로 FIFO 버퍼 장치를 갖추고  있는 시리얼 보드에는 어떤 하드웨어도  필요하지 않
+다. 이 시리얼 보드를 사용하는 것은 우편함을 사용하는 것보다 더 이해하기 쉬우며, 적당한
+가격대로 다이얼업 IP를 제공하는 사설 단체들이 증가하고 있다.
+<P>리눅스에서도 유용하게 사용할 수 있는  SLIP과 PPP 보드가 있다.  SLIP는 어느 정도까지
+개발이 되었고, PPP는 최근에 Michael Callahan과 Al Longyear에 의해서 개발되고 있다.
+이 부분에 대해서는 다음장에서 자세하게 설명할 것이다.
+<P>
+<H2><A NAME="ss7.1">7.1 General Requirements</A>
+</H2>
+
+<P>SLIP와 PPP를 사용하기 위해서는  먼저 이전 장에서 설명했던  기본적인 네트워킹 환경을
+설정해 놓아야 한다. 적어도, 네임 리솔루션을 제공해 주는 루프백 인터페이스 정도는  설정
+해 놓아야 한다. 인터넷에 접속할 때, 어쩌면 DNS를 사용하고 싶을 것이다. 가장 간단한 옵
+션으로는 네임 서버의 주소를 resolv.conf 파일에 넣어 두는 것이다. SLIP 연결이 활성화 되
+자마자 이 서버를 활성화 시킬 것이다. 그리고 접속할 곳을 이 네임 서버에 적어 두는 것도
+좋은 방법이다.
+<P>그러나, 이 방법이 최선의 것만은 아니다. 왜냐하면, 모든 네임 룩업은 SLIP/PPP 링크를 통
+해서 이루어지기 때문이다. 만약 대역을 소비하는 것이 걱정된다면, caching-only 네임 서버
+를 설정해 둘 수도 있다. 만약 실제로 도메인을 제공하지 않는다면, 이러한 링크는 단지  호
+스트에서 제공되는 DNS 질의에 의존한 채 활동할  것이다. 이 과정에서 이점이 있다면, 그
+것은 캐시를 만들 수 있다는 것이고, 그럼으로써 대부분의 질의는 오직 한번 시리얼 라인을
+거쳐서 보내지게 된다. caching-only 서버에  있는 named.boot 파일은 다음과 같은  형태를
+띄고 있다.
+<PRE>
+ ; named.boot file for caching-only server
+ directory                            /var/named
+ primary     0.0.127.in-addr.arpa   db.127.0.0 ; loopback net
+ cache       .                      db.cache  ; root servers
+</PRE>
+<P>게다가 named.boot 파일에 루트 네임 서버의 유효 목록을 가지고 있는 db.cache 파일을 설
+정해 두어야 한다.
+<P>
+<P>
+<P>
+<H2><A NAME="ss7.2">7.2 SLIP Operation</A>
+</H2>
+
+<P>전화접속에 의한 IP-server들은 종종 특별한 사용자계정을 통하여 SLIP 서비스를 제공한다. 그러한 계정으로 접속한 후에 당신은 일반적인 shell로 떨어지지 않는다 ;
+대신 프로그램이나 혹은 shell script가 그 서버의 serial line을 위한 SLIP driver를 실행키기게 되고 적절한 네트워크 인터페이스를 설정하게 된다.
+<P>
+<P>어떤 운영체제에서, SLIP driver는 사용자 영역의 프로그램이다; 커널의 일부분일 경우에 속도는 더 빠르다. 그러나 이것은 serial line이 SLIP 모드로 전환될 것을 요구한다. 이것은 SLIPDISC라는 특별한 tty line discipline에 의해 이루어진다. tty가 normal line discipline(DISCO)인데 반하여 이것은 단지 user processes의 data만을 교환하며 보통 읽기(2)와 쓰기(2) 호출을 사용하고, SLIP driver는 tty를 통하여 읽거나 쓸 수는 없다. 반면에 모든 serial port를 통하여 오는 모든 data는 SLIP driver를 직접 통과한다. SLIPDISC에서 그 역할은 뒤바뀌게 된다: 이제 어떤 사용자 영역의 process들이 tty를 통해 쓰거나 읽는 과정이 차단되고, 그동안 serial port를 통해 오는 모든 data들이 SLIP driver에 직접적으로 전달된다.
+<P>SLIP driver 그 자체는 SLIP 프로토콜을 통한 많은 변화들을 이해한다. 전형적인 SLIP과는 별개로, 그것은 IP-packet을 통해 나가는 소위 Van Jacobson header compression 에서 동작하는 CSLIP 또한 이해한다. 이것은 interactive session들을 위한 throughput을 현저하게 발달시킨다. 추가적으로 이들 프로토콜들을 위한 6-bit 버전들이 있다.
+<P>Serial line을 SLIP 모드로 변환하기 위한 간단한 방법은 slattach tool을 이용한 방법이다. 당신의 모뎀이 /dev/cua3에 있다고 하고, SLIP server에 성공적으로 접속하였다고 하자. 그러면 당신은 이렇게 실행한다.
+<P>
+<PRE>
+        # slattach /dev/cua3 &amp;
+</PRE>
+<P>이것은 cua3의 line discipline을 SLIPDISC로 전환하고, 그것을 SLIP network interface들 중의 하나로 붙이게 된다. 만약 이것이 당신의 첫번째 active SLIP link라면 line은 sl0에 붙게 된다; 두번째는 sl1에 붙게될 것이고 계속 이런 식으로 나간다. 현재의 커널은 동시에 8개의 SLIP link들을 지원한다.
+<P>Slattach에 의해 기본값으로 선택되는 encapsulation은 CSLIP이다. 당신은 -p 스위치에 의해 다른 모드를 선택할 수 있다. 일반적인 SLIP(압축하지 않는)을 사용하기 위해서 당신은 다음 명령을 사용할 수 있다.
+<P>
+<PRE>
+        # slattach -p slip /dev/cua3 &amp;
+</PRE>
+<P>또다른 모드들은 cslip, slip6, cslip6(SLIP의 6-bit version을 위한), 그리고 adaptive SLIP을 위한 adaptive가 있다. 후자는 커널이 원격 사용자들의 SLIP encapsulation 종류를 찾아내도록 내버려둔다.
+<P>당신은 당신의 peer가 하는 것과 동일한 encapsulaiton을 사용해야 한다는 것을 명심하여야 한다. 한 예로, 만약 cowslip이 CSLIP을 사용한다면 당신도 역시 그것을 사용해야 한다. Mismatch의 증상은 원격 호스트에 ping을 하였어도 어떠한 packet도 다시 돌려보내주지 않는다. 만약 다른 원격호스트가 당신에게 ping을 하여도 당신은 콘솔에서 "Can't build ICMP header"라는 메세지를 보게된다. 이러한 어려움을 해결하는 방법 중 하나는 adaptive SLIP을 사용하는 것이다.
+<P>사실, slattach는 단지 SLIP만을 가능하게 해주는 것이 아니라, PPP나 KISS(ham radio사용자들을 위한 또다른 프로토콜)와 같은 serial line을 통한 다른 프로토콜의 사용도 가능하게 해준다. 더 자세한 사항을 위해서는 slattach(8) 매뉴얼 페이지를 참고하라.
+<P>SLIP driver로 전환한 후에, 당신은 network interface를 조절해 주어야 한다. 다시 우리는 표준이 되는 ifconfig과 route 명령을 사용한다. vlager라는 계정으로 접속한 경우를 생각해서 우리가 cowslip이라는 서버에 dial up으로 접속했다고 하자. 당신은 이렇게 실행해야 한다.
+<P>
+<PRE>
+        # ifconfig sl0 vlager pointopoint cowslip
+        # route add cowslip
+        # route add default gw cowslip
+</PRE>
+<P>첫번째 명령줄은 interface를 point-to-point link로 cowslip으로 설정한다. 두번째와 세번째 명령줄은 cowslip으로의 route를 더하는 것이고, default route로 cowslip을 gateway로 쓰겠다는 뜻이다.
+<P>SLIP link를 끝낼 때에는, 당신은 먼저 cowslip을 통한 모든 route들을 del option으로 삭제해야 한다. interface를 종료하고 slattach에 접속을 끊겠다는 신호를 보내야 한다. 그 다음에 다시 당신의 터미널 프로그램을 이용하여 모뎀을 끊어야 한다.
+<P>
+<PRE>
+        # route del default
+        # route del cowslip
+        # ifconfig slo down
+        # kill -HUP 516
+</PRE>
+<H2><A NAME="ss7.3">7.3 Using dip</A>
+</H2>
+
+<P>이제 전장의 것은 다소 간단하였다. 그럼에도 불구하고 당신은 위에서 보여진 전절의 모든 과정들을 단순한 명령만으로 자동적으로 실행하기를 원할지도 모른다. dip이 바로 이것을 위한 것이다. 이 글이 쓰여지는 현재의 버전은 3.3.7이다. 이것은 많은 사람들에 의해 heavily하게 패치되었으므로 당신은 '그' dip 프로그램에 대해서 더 이상 말할 필요가 없다. 이러한 발전의 다른 변형들이 미래의 버전에 hopefully하게 merged in 될것이다.
+<P>dip은 당신의 모뎀을 제어하고,line을 SLIP 모드로 변환하고, interface를 조정하기 위한 간단한 scripting 언어의 번역을 할 수 있다. 이것은 다소 원시적이고 제한적이기는 하지만 대부분의 경우에 충분하다. 언젠가 새로운 release의 dip에서는 더 많은 versatile 언어가 지원될 것이다.
+<P>SLIP interface를 조절하기 위해서, dip은 root의 권한을 요구한다. 그것은 dip의 setuid를 root로 할 것을 유혹하는 데 그러면 모든 사용자들이 어떤 SLIP 서버에 root 권한이 없이도 접속할 수 있게 된다. 이것은 매우 위험한데, 왜냐하면 bogus interfaces를 설정하는 것과 dip을 이용한 default route는 당신의 network를 심각하게 손상시킬수도 있기 때문이다.
+더 나쁜 경우, 당신의 사용자들에게 '어떤' SLIP 서버에도 접속할 수 있는 권한을 주게 되는 것이며 당신의 네트워크에서 위험한 공격을 가할 수 있게 된다. 그래서 당신이 당신의 사용자들에게 SLIP 연결을 하도록 하고 싶다면, 각각의 개별적인 SLIP 서버를 위한 작은 wrapper 프로그램을 사용하고, 이 wrapper들이 접속을 만들기 위한 특별한 script들을 invoke하게 된다. 이 프로그램들은 안전하게 root 권한을 만들 수 있다.
+<P>
+<P>
+<H3>A Sample Script</H3>
+
+<P>
+<P>
+<DL>
+<DT><B> Figure: A sample dip script </B><DD><P>
+</DL>
+<P>
+<P>
+<PRE>
+            # cow slip의 전화접속을 위한 dip 예제 스크립트
+            # 로컬과 원격 이름과 주소를 설정
+            get $local vlager
+            get $remote cowslip
+
+            port cua3                # 시리얼 포트를 선택
+            speed 38400              # 최대 속도를 설정
+            modem HAYES              # 모뎀 종류를 설정
+            reset                    # 모뎀과 tty를 재설정
+            flush                    # flush out modem response
+
+            # 전화걸기를 준비
+            send ATQ0V1E1X1\r
+            wait OK 2
+            if $errlvl != 0 goto error
+            dial 0123456789
+            if $errlvl != 0 goto error
+            wait CONNECT 60
+            if $errlvl != 0 goto error
+
+            # 오케이, 이제 연결!
+            sleep 3
+            send \r\n\r\n
+            wait ogin: 10
+            if $errlvl != 0 goto error
+            send Cvlager\r
+            wait ssword: 5
+            if $errlvl != 0 goto error
+                #better not leave your password in ascii (thanx noud)
+            password
+            wait running 30
+            if $errlvl != 0 goto error
+        #당신의 원격 IP를 설정하기 위해
+        get $remote remote
+        print remote = $remote
+        if $errlvl != 0 goto error
+        wait to 3
+        get $local remote
+        print local = $local
+        if $errlvl != 0 goto error
+
+
+        # 이제 우리는 연결되었고, 원격측은 CSLIP을 시작
+        print Connected to $remote with address $rmtip
+        default                  # Make this link our default route
+        mode CSLIP                # We go to CSLIP mode, too
+        # 에러가 떨어졌을 경우
+        error:
+        print CSLIP to $remote failed.
+</PRE>
+<P>예제 스크립트가 실제로 만들어 졌다. Argument로 지정된 스크립트를 이용해 dip이 cowslip을 연결하기 위해 사용될 것이다.
+<PRE>
+           # dip cowslip.dip
+           DIP: Dialup IP Protocol Driver version 3.3.7 (12/13/93)
+           Written by Fred N. van Kempen, MicroWalt Corporation.
+
+           connected to cowslip.moo.com with addr 193.174.7.129
+           #
+</PRE>
+<P>Cowslip에 접속하고, CSLIP을 가능하게 한 후에 dip은 터미널을 떠나서 백그라운드 작업으로 전환될 것이다. 그런 후에 당신은 CSLIP 링크를 이용하여 일반적인 네트워킹 서비스들을 이용할 수 있다.
+접속을 끊기 위하여, 단순히 -k옵션을 사용하면 된다. 이것은 전화를 끊는 신호를 /etc/dip.pid에 있는 dip의 pid를 알아내어 dip에 보낸다.
+<P>
+<P>
+<PRE>
+           # kill -k
+</PRE>
+
+<P>dip의 스크립트 언어에서, $ 표시가 앞에 붙는 키워드들은 변수들의 이름을 표시한다.dip은 아래에서 보여질 미리 정의되어진 변수들의 집합을 가지고 있다. SLIP 링크와 연관된 local과 remote의 호스트네임을 포함하고 있는 $remote와 $local 이 그 예이다.
+<P>예제 스크립트에 있는 처음 두 선언들은 dip이 변수들을 설정하는 명령들을 갖고 오는 것이다. 여기에서 local과 remote의 호스트 네임은 상대적으로 vlager와 cowslip으로 설정되었다.
+<P>
+<P>다음 다섯개의 선언들은 터미널 라인과 모뎀을 설정한다. <EM> reset</EM>은 reset 문자열을 모뎀으로 보낸다. ; Hayes 호환 모뎀의 경우, 이것은 ATZ 명령이다. 다음 선언은
+모뎀의 반응을 분출시킨다. 그리하여 로긴 chat이 다음의 몇 줄이 제대로 작동할 수 있도록 해주는 것이다. 이 chat은 곧이 곧대로 앞으로만 나아간다: 이것은 단순히 cowslip의 전화번호인 49188로 전화를 걸고, hey-jude 암호를 이용하여 Svlager 계정에 로그인한다. wait명령은 dip이 첫번째 argument를  기다리도록 한다.; 두번째 argument로 주어진 숫자는 만약 어떠한 문자열도 수신되지 않았을 경우 주어진 그 시간만큼 대기하도록 하는 것이다. if 명령은 명령이 수행되는 동안 어떠한 에러도 발생하지 않을 경우 로그인 과정에서 흩뿌린다(?).
+<P>
+<P>마지막 명령 default는 로그인 한 후에 수행된다. 이 명령은 라인에 SLIP 모드를 가능하게 해주고, 당신에게 맞는 인터페이스와 라우팅 테이블을 설정해주는 default route를 모든 호스트와 모드의 SLIP 링크를 만들어준다.
+<P>
+<P>
+<H3>A dip Reference</H3>
+
+<P>매우 널리 쓰임에도 불구하고, dip은 아직 그 명령이 잘 정리되지 않았다. 이 부분에서는 거의 대부분의 dip 명령어들을 정리해 볼 것이다.
+당신은 dip의 테스트 모드에서 모든 명령어들을 훑어볼 수 있고 help 명령을 이용해서 그 안으로 들어가 볼 수 있다. 명령들의 문법적인 부분들을 알아보기 위해 어떤 변수도 없이 그것이 입력해야 한다. ; 물론 변수들이 없이는 어떠한 동작도 하지 않는다.
+<P>
+<P>
+<PRE>
+           DIP> help
+           DIP knows about the following commands:
+
+                   databits default  dial     echo     flush
+                   get      goto     help     if       init
+                   mode     modem    parity   print    port
+                   reset    send     sleep    speed    stopbits
+                   term     wait
+
+           DIP> echo
+           Usage: echo on|off
+           DIP>
+</PRE>
+<P>
+<P>아래에서, 예들은 DIP> 프롬프트를 어떻게 테스트 모드에서 입력하는지 보여주고, 어떻게 그 결과가 나타나는지를 보여준다.
+<P>
+<P>
+<H3>The Modem Commands</H3>
+
+<P>당신의 시리얼 라인과 모뎀을 조절하기 위해 dip이 제공하는 명령은 매우 많다. 이들 중 시리얼 포트, 속도와 데이타비트, 정지비트, 패러티를 설정하는 port와 같이 일반적인 라인 변수를 설정하는 명령들은 아주 명백하다.
+<P>
+<P>modem 명령은 모뎀의 종류를 선택한다. 현재 지원되는 타입은 HAYES(대문자가 요구됨)밖에 없다. 당신은 반드시 dip에 모뎀의 타입을 제공해주어야 하며, 그렇지 않을 경우 다이얼과 reset명령은 거부될 것이다. reset 명령은 reset 문자열을 모뎀에 보낸다.; 거기에 쓰이는 문자열은 선택된 모뎀의 종류에 따른다. 일반적으로 Hayes호환 모뎀의 경우에는 ATZ가 된다.
+<P>flush코드는 모뎀이 멀리 보낸 명령들을 분출시키는데 사용된다(?). 그렇지 않으면 reset 명령뒤에 따라오는 chat 스크립트는 혼란스러워지게 되는데 이것은 먼저번의 OK 응답을 읽에 되기 때문이다.
+<P>init 명령은 모뎀이 전화를 걸기전에 초기화를 위해 선택한다. Hayes호환 모뎀을 위한 기본값은 ``ATE0 Q0 V1 X1''이다.
+<P>dial 명령은 마지막으로 초기화 문자열을 보낸 후에 원격 시스템에 전화를 건다. Hayes 모뎀을 위한 기본명령은 ATD이다.
+<P>
+<P>
+<H3>echo and term</H3>
+
+<P>echo 명령은 디버깅 목적을 위해 사용된다. echo on 하게 되면 시리얼을 통해 가는 모든 내용을 콘솔에 dip이 echo하게 된다. 이것은 echo off에 의해 꺼진다.
+<P>dip은 또한 당신이 일시적으로 스크립트 모드를 떠나 터미널 모드로 들어가도록 허락해 준다. 이 모드에서 당신은 dip을 일반 터미널의 프로그램처럼 사용할 수 있으며, 시리얼 라인에 쓰고, 그것으로부터 읽을 수 있다. 이 모드를 종료하기 위해서는 Ctrl-]을 입력하라.
+<P>
+<P>
+<H3>The get Command</H3>
+
+<P>get 명령은 dip의 변수를 설정하는 방법이다. 가장 간단한 형식은 위에서 계속 보여진대로 변수에 상수를 설정하는 방법이다. 그러나 아마도 당신은 사용자에게 어떤 값 대신에 어떤 특정한 키워드를 입력하도록 하고 싶을 것이다.
+<PRE>
+           DIP> get $local ask
+           Enter the value for $local:
+</PRE>
+
+세번째 방법은 원격호스트로부터 값을 얻어오는 것이다. 처음에 보여진 Bizarre와 같이 어떤 경우에는 이것이 매우 유용하다: 어떤 SLIP 서버들은 SLIP 링크에 당신만의 IP-주소를 허락하지 않고, 당신에게 어떤 주소가 할당되어 있는 지를 메세지를 통해 보여주면서 형편없는 주소를 당신이 어디에서 접속하든 당신에게 할당할 것이다. 만약 그 메세지가 "Your address:193.174.7.202" 이런 식으로 보인다면 아래의 dip code가 당신이 원하는 주소를 택할 수 있도록 해 줄 것이다.
+<PRE>
+        wait address: 10
+        get $locip remote
+</PRE>
+<P>
+<P>
+<H3>The print command</H3>
+
+<P>이것은 dip이 시작된 콘솔에 텍스트를 echo하기 위한 명령이다. 다음과 같이 어떠한 dip의 변수라도 print 명령에 사용될 수 있다.
+<PRE>
+           DIP> print Using port $port at speed $speed
+           Using port cua3 at speed 38400
+</PRE>
+<P>
+<H3>Variable Name</H3>
+
+<P>dip은 단지 먼저 정의되어 있는 변수들만을 이해한다. 변수명은 반드시 $로 시작해야 하며 소문자들로 쓰여져야 한다.
+<P>$local과 $locip 변수는 로컬 호스트의 이름과 IP-주소를 포함한다. 호스트네임을 설정하는 것은 dip이 인정된 호스트네임을 $local에 저장하며, 동시에 그에 해당하는 IP-주소를 $locip에 저장한다. 유사한 경우가 $locip를 설정할 경우에 일어난다.
+<P>$remote와 $remotip 변수들도 똑같이 원격호스트의 이름과 주소를 포함한다. $mtu는 접속의 MTU 값을 포함한다.
+<P>이들 다섯개의 변수들이 get 명령을 이용해 직접적으로 설정되는 값들이다. 다른 변수들의 host는 단지 그에 해당하는 명령들만을 이용해 설정되나 print 선언에 의해 사용된다. ; 이런 것들은 $modem, $port, 그리고 $speed이다.
+<P>$errlvl은 마지막 실행된 명령의 결과에 결정되는 변수이다. 만일 이 값이 0이면 성공을 의미하고 다른 0이 아닌 값일 경우에는 에러를 의미한다.
+<P>
+<P>
+<H3>The if and goto command</H3>
+
+<P>if 명령은 일반적으로 생각하는 if라기보다는 상황에 따른 경우이다. 사용 문법은
+<PRE>
+           if var op number goto label
+</PRE>
+<P>이 표현은 반드시 $errlvl, $locip, and $rmtip와 같은 변수들 사이에서 간단한 비교여야 한다. 두번째 피연산자는 반드시 정수여야 한다; 연산자는 ==, !=, &lt;, >, &lt;=, 그리고 >= 중의 하나이어야 한다.
+<P>
+goto 명령은 라벨을 포함하고 있는 라인의 스크립트의 연속적인 실행을 가능하게 한다. 라벨은 반드시 그 라인의 첫부분이어야 하며, 콜론이 뒤에 따라붙어야 한다.
+<P>
+<P>
+<H3>send, wait and sleep</H3>
+
+<P>이 명령들은 dip의 간단한 chat 스크립트들을 돕는 도구들이다. send는 그것의 argument들의 시리얼 라인으로 출력한다. 변수들을 지원하지는 않지만 n과 b와 같은 모든 C-스타일의 역슬래쉬 문자시퀀스를 인식한다. 틸드문자 ()는 리턴/개행문자의 대용으로 사용한다.
+<P>wait는 한 단어를 하나의 argument로 간주하고, 그것이 이 단어를 인식할 때까지 시리얼 라인을 통한 모든 입력을 검사한다. 그 단어 자신은 어떠한 빈칸도 가지고 있어서는 안된다. 선택적으로, 당신은 두번째 argument로써 timeout을 주어야한다.; 만약 기대되었던 문자가 오랜 시간이 지나도 수신이 되지 않는다면 그 명령은 1이라는 $errlvl를 반환한다.
+<P>sleep 선언은 어느 정도의 특정의 시간을 대기하기 위해 사용한다. 한 예로 로그인 시퀀스를 완벽하게 인내심있게 기다리기 위해 사용된다. 다시, 그 시간간격은 초로 표현된다.
+<P>
+<P>
+<H3>mode and default</H3>
+
+<P>이 명령들은 시리얼 라인을 SLIP모드로 전환하고 인터페이스를 조절하기 위해 사용된다.
+<P>mode 명령은 데몬모드로 들어가기 전에 dip에 의해 실행되는 마지막 명령이다. 에러가 발생하지 않는다면 그 명령은 반환되지 않는다.
+<P>mode는 프로토콜의 이름을 argument로 취급한다. 현재 dip은 SLIP과 CSLIP을 유효한 이름들로 인식한다. 그러나 현재의 버전의 dip은 adaptive SLIP은 인식하지 못한다.
+<P>시리얼 라인에서 SLIP 모드를 가능하게 한 후에, dip은 인터페이스를 point-to-point link로 설정하기 위해 <EM> ifconfig</EM>을 실행하게 되고 경로를 원격 호스트에 맞추기 위해 route명령을 시도한다.
+<P>추가로, 만약에 스크립트가 모드 전에 기본 명령을 실행한다면, dip는 기본 route point를 SLIP 링크로 정할 것이다.
+<P>
+<H2><A NAME="ss7.4">7.4 Running in Server Mode</A>
+</H2>
+
+<P>당신의 SLIP 클라이언트를 설정하는 것은 무척 힘든 일이다. 그러나 이에 반해, 즉 당신의 호스트를 SLIP서버로 만드는 것은 훨씬 쉬운 일이다.
+<P>이것을 가능하게 하는 방법 중 하나는 diplogin을 사용해 dip을 서버모드로 사용하는 것이다. 이것의 주요 설정화일은 이 호스트가 정해주는 로그인 이름과 주소가 담겨있는 /etc/diphosts 화일이다. 상대적으로 당신은 BSD에서 유래한 도구인 sliplogin을 사용할 수 있다. sliplogin은 당신이 실행해야 하는 호스트 접속과 접속을 끊는 쉘 스크립트를 좀 더 간편하게 설정할 수 있다. 현재 이것은 베타버전이다.
+<P>양쪽 프로그램 모두 하나의 SLIP 클라이언트 당 하나의 로그인 계정을 요구한다. 한 예로 당신이 dent.beta.com의 Arthur Dent의 SLIP 서비스 제공자가 된다고 상상해보라.당신은 당신 호스트의 passwd 화일에 다음과 같은 내용을 추가함으로써 dent라는 계정을 만들어야 한다.
+<P>
+<P>
+<PRE>
+           dent:*:501:60:Arthur Dent's SLIP account:/tmp:/usr/sbin/diplogin
+</PRE>
+<P>그런 후에 당신은 dent의 비밀번호를 passwd utility를 사용해서 설정해야 한다.
+<P>이제 dent가 로그인 하고, dip은 서버를 시작할 것이다. 그가 정말로 SLIP을 사용하도록 허가 되었는지 알아보기 위해 dip은 /etc/diphosts에서 사용자 이름을 찾을 것이다. 이 화일은 각각의 SLIP 사용자들의 허가 권리와 연결 파라미터룰 세밀히 검토할 것이다. dent를 위한 예제가 아마도 다음과 같을 것이다.
+<P>
+<P>
+<PRE>
+dent::dent.beta.com:Arthur Dent:SLIP,296
+</PRE>
+<P>첫번째 콜론으로 나누어진 부분은 로그인한 사용자의 이름일 것이다. 두번째 부분은 비밀번호를 포함하고 있을 것이다(아래를 보라). 세번째 부분이 거는 쪽의 호스트네임이거나 IP-주소이다. 다음으로 오는 내용들은 그다지 별 의미가 없는 것들이다. 마지막 부분은 연결 파라미터들이다. 이것은 콤마로 분리되어 MTU가 뒤어 붙는 프로토콜(현재로서는 SLIP이나 CSLIP)을 열거한다.
+<P>dent가 로그인 했을때, diplogin은 diphosts 화일로부터 그에 관한 정보를 추출하고 만약, 두번째 부분이 비어있지 않다면 "외부 보안 비밀번호"를 요구한다. 사용자에 의해 입력된 이 문자열은 diphosts화일의 password(암호화되지 않은)와 비교된다. 만약 둘이 서로 맞지 않다면 로그인 시도는 거부된다.
+<P>그렇지 않고 diplogin이 시리얼라인을 CSLIP이나 SLIP 모드로 진행해 나가면, 인터페이스와 route를 설정한다. 이 연결은 사용자가 접속을 끊거나 모뎀이 전화선에서 끊길때까지 남아있다. 그러면 diplogin은 라인을 일반 라인으로 돌리고 빠져나온다.
+<P>diplogin은 super-user 권한을 요구한다. 만약 당신이 dip를 root로 실행할 권한이 없을 경우 단순한 링크 대신에 당신은 diplogin을 분리된 dip의 복사본으로 만들어야 한다. 그러면 diplogin은 dip 그 자신의 상태에 영향을 미치지 않고 안전한 setuid를 가질수 있게 된다.
+<P>
+<P>
+<HR>
+<A HREF="NetAdminGuide-KLDP-8.html">다음</A>
+<A HREF="NetAdminGuide-KLDP-6.html">이전</A>
+<A HREF="NetAdminGuide-KLDP.html#toc7">차례</A>
+</BODY>
+</HTML>
