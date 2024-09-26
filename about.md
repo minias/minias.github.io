@@ -3,5 +3,5 @@ layout: page
 title: Introduction
 ---
 
-- "소" 가 없습니다.
-- "개" 는 있습니다.
+- I no have a "cow".
+- I have a "dog".
