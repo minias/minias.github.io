@@ -3,5 +3,5 @@ layout: page
 title: Introduction
 ---
 
-- I no have a "cow".
-- I have a "dog".
+- I'm not a "cow".
+- I am a "dog".
