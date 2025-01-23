@@ -57,3 +57,9 @@
 
 - slug: testnet
   name: testnet
+
+- slug: aws
+  name: AWS
+
+- slug: cloudfront
+  name: cloudfront
