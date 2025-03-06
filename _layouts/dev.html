@@ -2,13 +2,14 @@
 layout: default
 ---
 
+<link rel="stylesheet" href="{{ '/public/css/dev.css' | absolute_url }}">
 <div class="dev">
-  <h1 class="dev-title">{{ page.title }}</h1>
+  <h1 class="dev-title">{{ dev.title }}</h1>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700&display=swap" rel="stylesheet">
   <div class="layout">
     <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
-    <div class="page home-page">
-      <div class="page-contents">
+    <div class="dev home-dev">
+      <div class="dev-contents">
         <h1>Home</h1>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas voluptates dolore id aspernatur odit minus quidem deleniti ab rerum exercitationem dolores neque officiis explicabo possimus blanditiis sed, voluptatem ut. Ab?</p>
         <p><label for="about">Learn more</label></p>
@@ -22,8 +23,8 @@ layout: default
     </label>
 
     <input name="nav" type="radio" class="about-radio" id="about" />
-    <div class="page about-page">
-      <div class="page-contents">
+    <div class="dev about-dev">
+      <div class="dev-contents">
         <h1>About</h1>
         <p>Amet consectetur adipisicing elit. Sed ipsam ad exercitationem, quo quae ullam, quidem laudantium corporis quis minima debitis nesciunt repellat. Quos dolore ex quis voluptas, minus ut?</p>
       </div>
@@ -36,8 +37,8 @@ layout: default
       </label>
 
     <input name="nav" type="radio" class="contact-radio" id="contact" />
-    <div class="page contact-page">
-      <div class="page-contents">
+    <div class="dev contact-dev">
+      <div class="dev-contents">
         <h1>Contact</h1>
         <p>Eaque accusamus magnam error unde nam, atque provident omnis fugiat quam necessitatibus vel nulla sed quibusdam fuga veritatis assumenda alias quidem asperiores?</p>
         <p><a href="#">Get in touch</a></p>
