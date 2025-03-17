@@ -41,4 +41,4 @@ tags: [blockchain]
 
 ### Reference
 
-[1](https://www.alchemy.com/best/mpc-wallets) "List of MPC Wallets"
+[1]:https://www.alchemy.com/best/mpc-wallets "List of MPC Wallets"
