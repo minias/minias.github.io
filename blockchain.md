@@ -8,9 +8,8 @@ title: blockchain
   <ul class="related-posts">
       <li>
         <h3>
-          <a href="blockchain/HDWallets">HD Wallets</a>
+          <a href="HDWallets">HD Wallets</a>
         </h3>
       </li>
-
   </ul>
 </div>
