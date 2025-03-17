@@ -18,11 +18,12 @@ tags: [blockchain]
 
 | Coin | Name | Description  | etc  |
 |:---:|:---:|:---:|:---:|
-| BTH | BIP-32 |   |   |
-| BTH | BIP-39 |   |   |
-| BTH | BIP-44 |   |   |
-| ETH | ERC-4337 |   |   |
-| ETH |   |   |   |
+| BTH | [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) | Hierarchical Deterministic Wallets |   |
+| BTH | [BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) | Mnemonic code for generating deterministic keys |   |
+| BTH | [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) | Multi-Account Hierarchy for Deterministic Wallets |   |
+| ETH | [ERC-4337](https://github.com/ethereum/ercs/blob/master/ERCS/erc-4337.md) | Account Abstraction Using Alt Mempool |   |
+| Trezor | [SLIP-39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)  | Shamir's Secret-Sharing for Mnemonic Codes |   |
+| Trezor | [SLIP-23](https://github.com/satoshilabs/slips/blob/master/slip-0023.md)  | Cardano HD master node derivation from a master seed |   |
 
 ## Benefits and Risks of HD Wallets
 
