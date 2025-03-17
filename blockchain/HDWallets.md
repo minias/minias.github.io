@@ -31,7 +31,7 @@ tags: [blockchain]
 
 ## Connection structure
 
-## What is an Multi-Party Computation (MPC) wallet?[1]
+## What is an Multi-Party Computation (MPC) wallet?<sup>[1]</sup>
 
 > An MPC wallet uses multi-party computation technology with the intention of enhancing security for your cryptocurrencies and other digital assets. It splits a wallet’s private key among multiple parties to increase privacy and reduce the risks of hacking, breaches, and losses. Unlike traditional wallets that rely on a single private key, MPC Wallets use advanced cryptographic techniques to strive to ensure that the private key is never exposed or stored in one location.
 
