@@ -16,7 +16,7 @@ tags: [blockchain]
 
 ## Spec
 
-| Coin | Name | Description  | etc  |
+| Name | Code | Description  | Etc |
 |:---:|:---:|:---:|:---:|
 | BTH | [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) | Hierarchical Deterministic Wallets |   |
 | BTH | [BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) | Mnemonic code for generating deterministic keys |   |
