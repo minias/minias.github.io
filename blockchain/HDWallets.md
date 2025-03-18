@@ -29,6 +29,14 @@ tags: [blockchain]
 
 ## Prior knowledge
 
+### HD Wallets Derivation Paths
+
+![HDWalletsDerivationPaths](/img/hdwallet_path.png)
+
+### BIP-44
+
+![BIP-44](/img/bip44.png)
+
 ## Connection structure
 
 ## What is an Multi-Party Computation (MPC) wallet?<sup>[1]</sup>
