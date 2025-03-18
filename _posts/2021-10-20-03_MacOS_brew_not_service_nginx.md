@@ -1,6 +1,6 @@
 ---
 layout: post
-title: nginx는 왜 일반계정으로 동작하지 못하는가?
+title: [MacOs] nginx는 왜 일반계정으로 동작하지 못하는가?
 tags: [tech]
 ---
 
