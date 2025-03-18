@@ -3,9 +3,10 @@ layout: post
 title: Golang Static check list
 tags: [go]
 ---
+
 ## 고언어 정적 오류 체크 리스트
 
-    오류 메시지도 한글로 보여주면 좋겠는데,아쉽다는 생각이다.
+> 오류 메시지도 한글로 보여주면 좋겠는데,아쉽다는 생각이다.
 
 ### 오류메시지 무시
 
@@ -13,12 +14,13 @@ tags: [go]
 
 > //lint:ignore Check1[,Check2,...,CheckN] reason
 
-```go
+```Golang
 //예시
 value  *big.Int //lint:ignore U1000 unused field is part of test
 ```
 
 #### 파일 무시
+>
 > //lint:file-ignore [Lint Code] [error msg]
 
 ```go
@@ -34,8 +36,8 @@ package main
 
 |Check| 설명|
 |---|---|
-|[SA    ](https://staticcheck.io/docs/checks/#SA    )|staticcheck|
-|[SA1   ](https://staticcheck.io/docs/checks/#SA1   )|표준 라이브러리의 다양한 오용|
+|[SA](https://staticcheck.io/docs/checks/#SA    )|staticcheck|
+|[SA1](https://staticcheck.io/docs/checks/#SA1   )|표준 라이브러리의 다양한 오용|
 |[SA1000](https://staticcheck.io/docs/checks/#SA1000)|잘못된 정규 표현식|
 |[SA1001](https://staticcheck.io/docs/checks/#SA1001)|잘못된 템플릿|
 |[SA1002](https://staticcheck.io/docs/checks/#SA1002)|형식이 잘못되었습니다.time.Parse|
@@ -65,15 +67,15 @@ package main
 |[SA1028](https://staticcheck.io/docs/checks/#SA1028)|sort.Slice슬라이스에만 사용할 수 있습니다.|
 |[SA1029](https://staticcheck.io/docs/checks/#SA1029)|호출 시 부적절한 키context.WithValue|
 |[SA1030](https://staticcheck.io/docs/checks/#SA1030)|strconv함수 호출 시 잘못된 인수|
-|[SA2   ](https://staticcheck.io/docs/checks/#SA2   )|동시성 문제|
+|[SA2](https://staticcheck.io/docs/checks/#SA2   )|동시성 문제|
 |[SA2000](https://staticcheck.io/docs/checks/#SA2000)|sync.WaitGroup.Add고루틴 내부에서 호출되어 경쟁 조건이 발생함|
 |[SA2001](https://staticcheck.io/docs/checks/#SA2001)|중요 섹션이 비어 있습니다. 잠금 해제를 연기하시겠습니까?|
 |[SA2002](https://staticcheck.io/docs/checks/#SA2002)|허용되지 않는 호출 testing.T.FailNow또는 고루틴에서SkipNow|
 |[SA2003](https://staticcheck.io/docs/checks/#SA2003)|잠금 Lock직후 연기됨, Unlock대신 연기할 가능성이 높음|
-|[SA3   ](https://staticcheck.io/docs/checks/#SA3   )|테스트 문제|
+|[SA3](https://staticcheck.io/docs/checks/#SA3   )|테스트 문제|
 |[SA3000](https://staticcheck.io/docs/checks/#SA3000)|TestMain호출하지 않고 os.Exit테스트 실패를 숨깁니다.|
 |[SA3001](https://staticcheck.io/docs/checks/#SA3001)|벤치마크 에 할당하면 b.N결과가 왜곡됩니다.|
-|[SA4   ](https://staticcheck.io/docs/checks/#SA4   )|실제로 아무것도 하지 않는 코드|
+|[SA4](https://staticcheck.io/docs/checks/#SA4   )|실제로 아무것도 하지 않는 코드|
 |[SA4000](https://staticcheck.io/docs/checks/#SA4000)|이진 연산자는 양쪽에 동일한 표현식이 있습니다.|
 |[SA4001](https://staticcheck.io/docs/checks/#SA4001)|&*x로 단순화되어 x복사되지 않습니다.x|
 |[SA4003](https://staticcheck.io/docs/checks/#SA4003)|부호 없는 값을 음수 값과 비교하는 것은 의미가 없습니다.|
@@ -104,7 +106,7 @@ package main
 |[SA4029](https://staticcheck.io/docs/checks/#SA4029)|슬라이스 정렬에 대한 비효율적인 시도|
 |[SA4030](https://staticcheck.io/docs/checks/#SA4030)|난수 생성에 대한 비효율적인 시도|
 |[SA4031](https://staticcheck.io/docs/checks/#SA4031)|nil에 대해 절대 nil 값 확인|
-|[SA5   ](https://staticcheck.io/docs/checks/#SA5   )|정확성 문제|
+|[SA5](https://staticcheck.io/docs/checks/#SA5   )|정확성 문제|
 |[SA5000](https://staticcheck.io/docs/checks/#SA5000)|nil 맵에 할당|
 |[SA5001](https://staticcheck.io/docs/checks/#SA5001)|Close가능한 오류를 확인하기 전에 연기|
 |[SA5002](https://staticcheck.io/docs/checks/#SA5002)|빈 for 루프( for {})가 회전하여 스케줄러를 차단할 수 있습니다.|
@@ -117,13 +119,13 @@ package main
 |[SA5010](https://staticcheck.io/docs/checks/#SA5010)|불가능한 유형 주장|
 |[SA5011](https://staticcheck.io/docs/checks/#SA5011)|가능한 nil 포인터 역참조|
 |[SA5012](https://staticcheck.io/docs/checks/#SA5012)|짝수 크기를 기대하는 함수에 홀수 크기 슬라이스 전달|
-|[SA6   ](https://staticcheck.io/docs/checks/#SA6   )|성능 문제|
+|[SA6](https://staticcheck.io/docs/checks/#SA6   )|성능 문제|
 |[SA6000](https://staticcheck.io/docs/checks/#SA6000)|regexp.Match루프에서 사용하거나 관련하려면 사용해야 합니다.regexp.Compile|
 |[SA6001](https://staticcheck.io/docs/checks/#SA6001)|바이트 슬라이스로 맵을 인덱싱할 때 최적화 기회가 누락됨|
 |[SA6002](https://staticcheck.io/docs/checks/#SA6002)|sync.Pool할당된 메모리 에 포인터가 아닌 값 저장|
 |[SA6003](https://staticcheck.io/docs/checks/#SA6003)|문자열을 범위 지정하기 전에 문자열을 룬 조각으로 변환|
 |[SA6005](https://staticcheck.io/docs/checks/#SA6005)|strings.ToLoweror를 사용한 비효율적인 문자열 비교strings.ToUpper|
-|[SA9   ](https://staticcheck.io/docs/checks/#SA9   )|틀릴 가능성이 높은 모호한 코드 구성|
+|[SA9](https://staticcheck.io/docs/checks/#SA9   )|틀릴 가능성이 높은 모호한 코드 구성|
 |[SA9001](https://staticcheck.io/docs/checks/#SA9001)|범위 루프의 지연은 예상할 때 실행되지 않을 수 있습니다.|
 |[SA9002](https://staticcheck.io/docs/checks/#SA9002)|os.FileMode8진수로 의도된 것처럼 보이는 8진수가 아닌 문자를 사용합니다 .|
 |[SA9003](https://staticcheck.io/docs/checks/#SA9003)|if 또는 else 분기의 빈 본문|
@@ -132,45 +134,45 @@ package main
 |[SA9006](https://staticcheck.io/docs/checks/#SA9006)|고정 크기 정수 값의 모호한 비트 이동|
 |[SA9007](https://staticcheck.io/docs/checks/#SA9007)|삭제하면 안 되는 디렉토리 삭제|
 |[SA9008](https://staticcheck.io/docs/checks/#SA9008)|else유형 주장의 분기가 올바른 값을 읽지 못하는 것 같습니다.|
-|[S     ](https://staticcheck.io/docs/checks/#S     )|Simple|
-|[S1    ](https://staticcheck.io/docs/checks/#S1    )|코드 단순화|
-|[S1000 ](https://staticcheck.io/docs/checks/#S1000 )|단일 케이스 선택 대신 일반 채널 전송 또는 수신 사용|
-|[S1001 ](https://staticcheck.io/docs/checks/#S1001 )|for 루프를 복사 호출로 교체|
-|[S1002 ](https://staticcheck.io/docs/checks/#S1002 )|부울 상수와의 비교 생략|
-|[S1003 ](https://staticcheck.io/docs/checks/#S1003 )|strings.Index호출을 다음으로 대체strings.Contains|
-|[S1004 ](https://staticcheck.io/docs/checks/#S1004 )|bytes.Compare호출을 다음으로 대체bytes.Equal|
-|[S1005 ](https://staticcheck.io/docs/checks/#S1005 )|공백 식별자의 불필요한 사용을 삭제하세요.|
-|[S1006 ](https://staticcheck.io/docs/checks/#S1006 )|for { ... }무한 루프에 사용|
-|[S1007 ](https://staticcheck.io/docs/checks/#S1007 )|원시 문자열 리터럴을 사용하여 정규식 단순화|
-|[S1008 ](https://staticcheck.io/docs/checks/#S1008 )|반환 부울 ​​표현식 단순화|
-|[S1009 ](https://staticcheck.io/docs/checks/#S1009 )|슬라이스에 대한 중복 nil 검사 생략|
-|[S1010 ](https://staticcheck.io/docs/checks/#S1010 )|기본 슬라이스 인덱스 생략|
-|[S1011 ](https://staticcheck.io/docs/checks/#S1011 )|단일을 사용하여 append두 개의 슬라이스를 연결합니다.|
-|[S1012 ](https://staticcheck.io/docs/checks/#S1012 )|time.Now().Sub(x)다음 으로 교체time.Since(x)|
-|[S1016 ](https://staticcheck.io/docs/checks/#S1016 )|구조체 필드를 수동으로 복사하는 대신 유형 변환을 사용하세요.|
-|[S1017 ](https://staticcheck.io/docs/checks/#S1017 )|수동 트리밍을 다음으로 대체하십시오.strings.TrimPrefix|
-|[S1018 ](https://staticcheck.io/docs/checks/#S1018 )|copy슬라이딩 요소에 사용|
-|[S1019 ](https://staticcheck.io/docs/checks/#S1019 )|make중복 인수를 생략하여 호출 단순화|
-|[S1020 ](https://staticcheck.io/docs/checks/#S1020 )|유형 어설션에서 중복된 nil 검사를 생략합니다.|
-|[S1021 ](https://staticcheck.io/docs/checks/#S1021 )|변수 선언 및 할당 병합|
-|[S1023 ](https://staticcheck.io/docs/checks/#S1023 )|중복 제어 흐름 생략|
-|[S1024 ](https://staticcheck.io/docs/checks/#S1024 )|x.Sub(time.Now())다음 으로 교체time.Until(x)|
-|[S1025 ](https://staticcheck.io/docs/checks/#S1025 )|fmt.Sprintf("%s", x)불필요하게 사용하지 마세요|
-|[S1028 ](https://staticcheck.io/docs/checks/#S1028 )|다음을 사용하여 오류 구성을 단순화하세요.fmt.Errorf|
-|[S1029 ](https://staticcheck.io/docs/checks/#S1029 )|문자열에 대한 직접 범위|
-|[S1030 ](https://staticcheck.io/docs/checks/#S1030 )|사용 bytes.Buffer.String하거나bytes.Buffer.Bytes|
-|[S1031 ](https://staticcheck.io/docs/checks/#S1031 )|루프 주변의 중복된 nil 검사를 생략합니다.|
-|[S1032 ](https://staticcheck.io/docs/checks/#S1032 )|sort.Ints(x), 및sort.Float64s(x)​sort.Strings(x)|
-|[S1033 ](https://staticcheck.io/docs/checks/#S1033 )|통화 주변에 불필요한 가드delete|
-|[S1034 ](https://staticcheck.io/docs/checks/#S1034 )|유형 주장의 결과를 사용하여 사례 단순화|
-|[S1035 ](https://staticcheck.io/docs/checks/#S1035 )|net/http.CanonicalHeaderKey메소드 호출 에 대한 중복 호출net/http.Header|
-|[S1036 ](https://staticcheck.io/docs/checks/#S1036 )|지도 접근에 대한 불필요한 가드|
-|[S1037 ](https://staticcheck.io/docs/checks/#S1037 )|정교한 수면 방식|
-|[S1038 ](https://staticcheck.io/docs/checks/#S1038 )|형식화된 문자열을 인쇄하는 불필요하게 복잡한 방법|
-|[S1039 ](https://staticcheck.io/docs/checks/#S1039 )|불필요한 사용fmt.Sprint|
-|[S1040 ](https://staticcheck.io/docs/checks/#S1040 )|현재 유형에 대한 유형 주장|
-|[ST    ](https://staticcheck.io/docs/checks/#ST    )|stylecheck|
-|[ST1   ](https://staticcheck.io/docs/checks/#ST1   )|문체 문제|
+|[S](https://staticcheck.io/docs/checks/#S     )|Simple|
+|[S1](https://staticcheck.io/docs/checks/#S1    )|코드 단순화|
+|[S1000](https://staticcheck.io/docs/checks/#S1000 )|단일 케이스 선택 대신 일반 채널 전송 또는 수신 사용|
+|[S1001](https://staticcheck.io/docs/checks/#S1001 )|for 루프를 복사 호출로 교체|
+|[S1002](https://staticcheck.io/docs/checks/#S1002 )|부울 상수와의 비교 생략|
+|[S1003](https://staticcheck.io/docs/checks/#S1003 )|strings.Index호출을 다음으로 대체strings.Contains|
+|[S1004](https://staticcheck.io/docs/checks/#S1004 )|bytes.Compare호출을 다음으로 대체bytes.Equal|
+|[S1005](https://staticcheck.io/docs/checks/#S1005 )|공백 식별자의 불필요한 사용을 삭제하세요.|
+|[S1006](https://staticcheck.io/docs/checks/#S1006 )|for { ... }무한 루프에 사용|
+|[S1007](https://staticcheck.io/docs/checks/#S1007 )|원시 문자열 리터럴을 사용하여 정규식 단순화|
+|[S1008](https://staticcheck.io/docs/checks/#S1008 )|반환 부울 ​​표현식 단순화|
+|[S1009](https://staticcheck.io/docs/checks/#S1009 )|슬라이스에 대한 중복 nil 검사 생략|
+|[S1010](https://staticcheck.io/docs/checks/#S1010 )|기본 슬라이스 인덱스 생략|
+|[S1011](https://staticcheck.io/docs/checks/#S1011 )|단일을 사용하여 append두 개의 슬라이스를 연결합니다.|
+|[S1012](https://staticcheck.io/docs/checks/#S1012 )|time.Now().Sub(x)다음 으로 교체time.Since(x)|
+|[S1016](https://staticcheck.io/docs/checks/#S1016 )|구조체 필드를 수동으로 복사하는 대신 유형 변환을 사용하세요.|
+|[S1017](https://staticcheck.io/docs/checks/#S1017 )|수동 트리밍을 다음으로 대체하십시오.strings.TrimPrefix|
+|[S1018](https://staticcheck.io/docs/checks/#S1018 )|copy슬라이딩 요소에 사용|
+|[S1019](https://staticcheck.io/docs/checks/#S1019 )|make중복 인수를 생략하여 호출 단순화|
+|[S1020](https://staticcheck.io/docs/checks/#S1020 )|유형 어설션에서 중복된 nil 검사를 생략합니다.|
+|[S1021](https://staticcheck.io/docs/checks/#S1021 )|변수 선언 및 할당 병합|
+|[S1023](https://staticcheck.io/docs/checks/#S1023 )|중복 제어 흐름 생략|
+|[S1024](https://staticcheck.io/docs/checks/#S1024 )|x.Sub(time.Now())다음 으로 교체time.Until(x)|
+|[S1025](https://staticcheck.io/docs/checks/#S1025 )|fmt.Sprintf("%s", x)불필요하게 사용하지 마세요|
+|[S1028](https://staticcheck.io/docs/checks/#S1028 )|다음을 사용하여 오류 구성을 단순화하세요.fmt.Errorf|
+|[S1029](https://staticcheck.io/docs/checks/#S1029 )|문자열에 대한 직접 범위|
+|[S1030](https://staticcheck.io/docs/checks/#S1030 )|사용 bytes.Buffer.String하거나bytes.Buffer.Bytes|
+|[S1031](https://staticcheck.io/docs/checks/#S1031 )|루프 주변의 중복된 nil 검사를 생략합니다.|
+|[S1032](https://staticcheck.io/docs/checks/#S1032 )|sort.Ints(x), 및sort.Float64s(x)​sort.Strings(x)|
+|[S1033](https://staticcheck.io/docs/checks/#S1033 )|통화 주변에 불필요한 가드delete|
+|[S1034](https://staticcheck.io/docs/checks/#S1034 )|유형 주장의 결과를 사용하여 사례 단순화|
+|[S1035](https://staticcheck.io/docs/checks/#S1035 )|net/http.CanonicalHeaderKey메소드 호출 에 대한 중복 호출net/http.Header|
+|[S1036](https://staticcheck.io/docs/checks/#S1036 )|지도 접근에 대한 불필요한 가드|
+|[S1037](https://staticcheck.io/docs/checks/#S1037 )|정교한 수면 방식|
+|[S1038](https://staticcheck.io/docs/checks/#S1038 )|형식화된 문자열을 인쇄하는 불필요하게 복잡한 방법|
+|[S1039](https://staticcheck.io/docs/checks/#S1039 )|불필요한 사용fmt.Sprint|
+|[S1040](https://staticcheck.io/docs/checks/#S1040 )|현재 유형에 대한 유형 주장|
+|[ST](https://staticcheck.io/docs/checks/#ST    )|stylecheck|
+|[ST1](https://staticcheck.io/docs/checks/#ST1   )|문체 문제|
 |[ST1000](https://staticcheck.io/docs/checks/#ST1000)|패키지 설명이 잘못되었거나 누락되었습니다.|
 |[ST1001](https://staticcheck.io/docs/checks/#ST1001)|도트 가져오기는 권장되지 않습니다.|
 |[ST1003](https://staticcheck.io/docs/checks/#ST1003)|잘못 선택된 식별자|
@@ -189,8 +191,8 @@ package main
 |[ST1021](https://staticcheck.io/docs/checks/#ST1021)|내보낸 유형의 문서는 유형 이름으로 시작해야 합니다.|
 |[ST1022](https://staticcheck.io/docs/checks/#ST1022)|내보낸 변수나 상수의 문서는 변수 이름으로 시작해야 합니다.|
 |[ST1023](https://staticcheck.io/docs/checks/#ST1023)|변수 선언의 중복 유형|
-|[QF    ](https://staticcheck.io/docs/checks/#QF    )|quickfix|
-|[QF1   ](https://staticcheck.io/docs/checks/#QF1   )|빠른 수정|
+|[QF](https://staticcheck.io/docs/checks/#QF    )|quickfix|
+|[QF1](https://staticcheck.io/docs/checks/#QF1   )|빠른 수정|
 |[QF1001](https://staticcheck.io/docs/checks/#QF1001)|드 모르간(De Morgan)의 법칙을 적용하세요|
 |[QF1002](https://staticcheck.io/docs/checks/#QF1002)|태그가 없는 스위치를 태그가 있는 스위치로 변환|
 |[QF1003](https://staticcheck.io/docs/checks/#QF1003)|if/else-if 체인을 태그된 스위치로 변환|

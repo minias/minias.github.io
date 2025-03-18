@@ -1,0 +1,9 @@
+{
+  "MD003": { "style": "atx" },
+  "MD007": { "indent": 2 },
+  "MD046": {"style": "consistent"},
+  "MD013": {"headings": false,"code_block_line_length":140,"line_length": 140},
+  "MD029": {"style": "one"},
+  "MD032": true,
+  "no-hard-tabs": false
+}
