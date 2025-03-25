@@ -23,6 +23,5 @@ git commit -m "onefile push test"
 #error: failed to push some refs to 'github.com-minias:minias/minias.github.io.git'
 
 git push --set-upstream origin temp_branch
-    
-```
 
+```

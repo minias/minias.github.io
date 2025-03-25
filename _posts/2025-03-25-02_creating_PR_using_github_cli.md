@@ -11,7 +11,6 @@ tags: [shell]
 
 ## Install github cli in MacOs
 
-
 ```sh
 brew install gh
 #upgrade
@@ -45,9 +44,8 @@ Press Enter to open https://github.com/login/device in your browser...
 gh pr create --title "New post 20250325" --body "pushing single file without checkou& pull"
 ```
 
-## 
+## merge to pr but not test
 
 ```sh
 gh pr merge <merge_no> --squash --body "my squash commit" --delete-branch
 ```
-
