@@ -31,3 +31,9 @@ select host : GitHub.com
 gh pr create --title "New post 20250325" --body "pushing single file without checkou& pull"
 ```
 
+## 
+
+```sh
+gh pr merge <merge_no> --squash --body "my squash commit" --delete-branch
+```
+
