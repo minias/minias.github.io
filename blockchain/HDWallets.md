@@ -41,10 +41,17 @@ tags: [blockchain]
 
 ## What is an Multi-Party Computation (MPC) wallet?<sup>[1]</sup>
 
-> An MPC wallet uses multi-party computation technology with the intention of enhancing security for your cryptocurrencies and other digital assets. It splits a wallet’s private key among multiple parties to increase privacy and reduce the risks of hacking, breaches, and losses. Unlike traditional wallets that rely on a single private key, MPC Wallets use advanced cryptographic techniques to strive to ensure that the private key is never exposed or stored in one location.
+> An MPC wallet uses multi-party computation technology with the intention of enhancing security for your cryptocurrencies and other digital assets.
+> It splits a wallet’s private key among multiple parties to increase privacy and reduce the risks of hacking, breaches, and losses.
+> Unlike traditional wallets that rely on a single private key, MPC Wallets use advanced cryptographic techniques to strive to ensure
+> that the private key is never exposed or stored in one location.
 
 ## Benefits and Risks of MPC Wallets
 
-> MPC wallets may provide several benefits, including enhanced security, flexibility, and control. They aim to enable multiple parties to participate in the management of digital assets, enabling improved security & risk mitigation, more efficient asset management & transfer, advanced access control & permissions, and streamlined collaboration between different parties. Potential risks include high communication costs and technical complexity. It's also worth noting that not all MPC wallets are open-source or interoperable, which could limit their usability and compatibility with other systems.
+> MPC wallets may provide several benefits, including enhanced security, flexibility, and control.
+> They aim to enable multiple parties to participate in the management of digital assets, enabling improved security & risk mitigation,
+> more efficient asset management & transfer, advanced access control & permissions, and streamlined collaboration between different parties.
+> Potential risks include high communication costs and technical complexity.
+> It's also worth noting that not all MPC wallets are open-source or interoperable, which could limit their usability and compatibility with other systems.
 
 [1]:https://www.alchemy.com/best/mpc-wallets "List of MPC Wallets"
