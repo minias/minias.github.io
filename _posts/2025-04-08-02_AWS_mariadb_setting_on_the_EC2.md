@@ -20,7 +20,7 @@ ERROR 1045 (28000): Access denied for user 'user'@'ip' (using password: YES)
 
 ```bash
 CREATE database DB;
-CREATE USER 'user'@'%' identified with mysql_native_password by 'pw';
+CREATE USER 'user'@'%' identified by 'pw';
 GRANT ALL privileges on DB.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 ```
