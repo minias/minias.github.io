@@ -6,10 +6,15 @@
 
 ## [plantuml proxy](https://www.plantuml.com/plantuml/proxy)
 
+## Use Markdown
+
+```md
+![IA_ServiceFront.uml](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/minias/minias.github.io/master/public/uml/IA_ServiceFront.iuml)
+```
+
 ## Example UML
 
 ![IA_ServiceFront.uml](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/minias/minias.github.io/master/public/uml/IA_ServiceFront.iuml)
-
 
 ## [IA_ServiceFront.iuml](https://raw.githubusercontent.com/minias/minias.github.io/master/public/uml/IA_ServiceFront.iuml)
 
