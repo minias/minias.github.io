@@ -6,6 +6,8 @@
 
 ## [plantuml proxy](https://www.plantuml.com/plantuml/proxy)
 
+## [plantuml manual](https://plantuml.com/ko/)
+
 ## Use Markdown
 
 ```md
@@ -118,6 +120,5 @@ FontColor SkyBlue
 *****_< Sign out
 **** Service [TBD]
 **** ADS [TBD]
-**** BRK Foundation [TBD]
 @endwbs
 ```
