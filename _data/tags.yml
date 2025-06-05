@@ -63,3 +63,9 @@
 
 - slug: cloudfront
   name: cloudfront
+
+- slug: ai
+  name: AI
+
+- slug: chatgpt
+  name: ChatGPT
