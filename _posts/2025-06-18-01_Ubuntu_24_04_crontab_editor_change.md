@@ -1,6 +1,6 @@
 ---
  layout : post
- title : ubuntu 24.04 crontab editor change
+ title : Ubuntu 24.04 crontab editor change
  tags: [linux,config]
 ---
 
