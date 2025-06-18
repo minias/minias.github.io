@@ -61,9 +61,9 @@ tags: [ai,chatgpt]
 
 1. 프로젝트별 README 고도화
      - 예: 실행 방법, 아키텍처 다이어그램, 예시 API 요청 등
-2. 테스트 코드 확대
+1. 테스트 코드 확대
     - 단위 테스트 + 통합 테스트 자동화 (특히 API 레이어)
-3. Conventional Commit 활용
+1. Conventional Commit 활용
     - 예: feat:, fix:, refactor: 등으로 커밋 정돈
 
 ## 종합 개발 역량 요약
