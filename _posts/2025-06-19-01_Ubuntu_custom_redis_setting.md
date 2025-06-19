@@ -5,6 +5,14 @@
 ---
 
 ```bash
+sudo vi /etc/redis/redis.conf
+daemonize no
+port 19379
+bind 0.0.0.0
+requirepass <비밀번호>
+```
+
+```bash
 sudo systemctl stop redis-server
 sudo systemctl disable redis-server
 sudo systemctl stop redis

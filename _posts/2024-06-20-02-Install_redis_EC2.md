@@ -15,7 +15,8 @@ sudo apt-get -y install redis-server
 
 ```sh
 sudo vim /etc/redis/redis.conf
-
+# 데몬 재시작 설정
+daemonize no
 # 전역 접근 허용
 bind 0.0.0.0
 # maxmemory-policy를 allkeys-lru로 설정하여 오래된 키부터 삭제되도록 한다.
@@ -23,7 +24,7 @@ maxmemory-policy allkeys-lru
 # 접근 패스워드 필요
 requirepass `{PASSWORD}`
 # 시스템 메모리 최대 클라수 정의(예시)
-# 300byte*1000 = 300Kb 
+# 300byte*1000 = 300Kb
 # 최대 3만을 넘기지 말아야한다.
 maxclients 1000
 ```
@@ -33,18 +34,18 @@ maxclients 1000
 ```sh
 # 메모리 사용량이 허용량을 초과할 경우, overcommit을 처리하는 방식 결정하는 값을 "항상"으로 변경
 sudo sysctl vm.overcommit_memory=1
-sudo echo "vm.overcommit_memory=1" >> /etc/sysctl.conf 
+sudo echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
 # 페이지 크기를 10MB로 변경
 sudo sysctl -w vm.nr_hugepages=10240
-sudo echo "vm.nr_hugepages = 10240"  >> /etc/sysctl.conf 
+sudo echo "vm.nr_hugepages = 10240"  >> /etc/sysctl.conf
 
-#check 
+#check
 sudo sysctl -a | grep vm
 
 # 서버 소켓에 Accept를 대기하는 소켓 개수 파라미터를 변경
 sudo sysctl -w net.core.somaxconn=1024
-sudo echo "net.core.somaxconn=1024" >> /etc/sysctl.conf 
-#check 
+sudo echo "net.core.somaxconn=1024" >> /etc/sysctl.conf
+#check
 sudo sysctl -a | grep somaxconn
 
 ```
@@ -57,10 +58,12 @@ sudo chmod -R u+rwX,g+rwX,u+rx /var/log/redis
 sudo chmod +r /etc/redis/redis.conf
 ```
 
-## Redis server start
+## Redis server start daemon
 
 ```sh
 sudo systemctl start redis-server.service
+sudo systemctl enable redis-server.service
+sudo systemctl status redis-server.service
 ```
 
 ## Redis Remote Access
