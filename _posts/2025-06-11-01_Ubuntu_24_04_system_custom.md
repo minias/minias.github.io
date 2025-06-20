@@ -25,6 +25,13 @@ sudo systemctl stop multipathd
 sudo systemctl disable multipathd
 ```
 
+## disable fwupd
+
+```bash
+sudo systemctl stop fwupd
+sudo systemctl disable fwupd
+```
+
 ## disable Snapd
 
 ```bash
