@@ -18,12 +18,12 @@ tags: [elasticsearch]
 > 일반적인 파일을 읽어서 벌크 인서트
 
 ```bash
-$ curl -XPOST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
+$ curl -XPOST "https://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
 ```
 
 > 유저/암호 기반 사용 (특문때문에 싱글쿼터를 사용)
 
 ```bash
-$ curl -u 'user/Password!' -XPOST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
+$ curl -u 'user/Password!' -XPOST "https://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @bulk.json
  ```
 
