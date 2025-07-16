@@ -2,7 +2,7 @@
 title:               Minias
 tagline:             "Minias blog's"
 description:         'Share tips and knowledge.'
-url:                 https://minias.github.io
+url:                 https://gnuhacker.com
 baseurl:             ''
 paginate:            20
 permalink:           pretty
@@ -11,11 +11,11 @@ markdown: kramdown
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-  
+
 # About/contact
 author:
   name:              Minias
-  url:               https://minias.github.io
+  url:               https://gnuhacker.com
   email:             gnuhacker@gmail.com
 
 # Gems
@@ -23,7 +23,7 @@ plugins:
   - jekyll-paginate
 
 # Custom vars
-version:             1.1.0 
+version:             1.1.0
 heme: jekyll-theme-tactile
 
 exclude: [changelog.md,SECURITY.md, LICENSE.md, README.md, Gemfile, Gemfile.lock]
