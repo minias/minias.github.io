@@ -18,6 +18,8 @@
 
 ## 결론
 
+> This document proposes to raise the upper bound on TCP's initial window (IW) to 10 segments (maximum 14600 B).
+>
 > [RFC 6928 - datatracker](https://datatracker.ietf.org/doc/rfc6928/) 문서를 근거
 
 ## 📦 TCP 초기 Congestion Window(CWND) 정리
