@@ -95,10 +95,12 @@ export const user = writable({ name: "Guest", level: 0 });
 
 ### 4.1 기본 구조
 
-  src/routes/
-    ├── +page.svelte        // 메인 페이지
-    ├── about/+page.svelte  // /about 페이지
-    └── dashboard/+page.svelte
+```sh
+src/routes/
+  ├── +page.svelte        // 메인 페이지
+  ├── about/+page.svelte  // /about 페이지
+  └── dashboard/+page.svelte
+```
 
 ### 4.2 Layout 활용
 
