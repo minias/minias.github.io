@@ -111,6 +111,8 @@ src/routes/
 
 ### 4.3 IA
 
+![IA2](/img/2025100201_IA2.svg)
+
 ![IA](/img/2025100201_IA.png)
 
 ## 5. API 연동
