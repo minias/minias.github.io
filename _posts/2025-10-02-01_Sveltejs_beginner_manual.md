@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Svelte biginner manual
+title: Svelte beginner manual
 tags: [front-end,svelte,js,ts,vite]
 ---
 
