@@ -72,3 +72,18 @@
 
 - slug: tcp
   name: tcp
+
+- slug: front-end
+  name: front-end
+
+- slug: svelte
+  name: svelte
+
+- slug: js
+  name: js
+
+- slug: ts
+  name: ts
+
+- slug: vite
+  name: vite
