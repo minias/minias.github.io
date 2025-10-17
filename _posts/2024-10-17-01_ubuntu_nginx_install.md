@@ -59,6 +59,7 @@ server {
 ```bash
     sudo nginx -t
     sudo systemctl restart nginx
+    sudo systemctl enable nginx
     sudo certbot --nginx
     sudo certbot renew --dry-run
 ```
