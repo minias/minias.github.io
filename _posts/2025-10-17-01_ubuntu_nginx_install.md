@@ -14,6 +14,16 @@ sudo apt install nginx -y
 sudo apt install certbot python3-certbot-nginx -y
 ```
 
+## ssl setting
+
+```bash
+#no nginx
+sudo certbot certonly --nginx -d dev.p2p.zoji.com
+# nginx use 80
+sudo certbot certonly --webroot -w /var/www/html -d dev.p2p.zoji.com
+
+```
+
 ## nginx custom config
 
 ```bash
